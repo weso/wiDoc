@@ -12,6 +12,7 @@ ITA  |    3 |    7 |    4
 
 It could be represented as:
 
+````turtle
 obs:EA09 wi:value 2 .
 obs:EA09 wi:country country:ESP .
 obs:EA09 wi:year 2009 .
@@ -23,7 +24,7 @@ obs:EB09 wi:year 2009 .
 obs:EB09 wi:indicator ind:B .
 
 . . .
-
+````
 
 
 Table with some missing values
