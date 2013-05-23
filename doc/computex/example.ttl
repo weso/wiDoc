@@ -1,0 +1,40 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obs: <http://data.webfoundation.org/webindex/v2013/observation/> .
+@prefix country: <http://data.webfoundation.org/webindex/v2013/country/> .
+@prefix indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> .
+@prefix cex: <http://purl.org/weso/ontology/computex#> 
+
+obs:EA09 cex:value 2 .
+obs:EA09 cex:country country:ESP .
+obs:EA09 cex:year 2009 .
+obs:EA09 cex:indicator indicator:A .
+
+obs:EB09 cex:value 1 .
+obs:EB09 cex:country country:ESP .
+obs:EB09 cex:year 2009 .
+obs:EB09 cex:indicator indicator:B .
+
+obs:EC09 cex:value 3 .
+obs:EC09 cex:country country:ESP .
+obs:EC09 cex:year 2009 .
+obs:EC09 cex:indicator indicator:C .
+
+obs:EA09 cex:value 2 .
+obs:EA09 cex:country country:ESP .
+obs:EA09 cex:year 2009 .
+obs:EA09 cex:indicator indicator:A .
+
+obs:EB09 cex:value 1 .
+obs:EB09 cex:country country:ESP .
+obs:EB09 cex:year 2009 .
+obs:EB09 cex:indicator indicator:B .
+
+obs:EC09 cex:value 3 .
+obs:EC09 cex:country country:ESP .
+obs:EC09 cex:year 2009 .
+obs:EC09 cex:indicator indicator:C .
