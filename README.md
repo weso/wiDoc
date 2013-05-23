@@ -1,4 +1,4 @@
 widoc
 =====
 
-Web Index Documentation and Tasks
+This project contains documentation and rationale for the WebIndex 2013 development process.
