@@ -16,12 +16,12 @@ where {base} = Base URI for WebIndex
 
 ## Examples
 
-```turtle
+```
 {base}/v2013/observation/{sheet}/obs4567
 ```
 ## Template after dereference
 
-```turtle
+```template
 @prefix cex: <http://purl.org/weso/ontology/computex#> 
 @prefix country: <{base}/v2013/country/> .
 @prefix indicator: <{base}/v2013/indicator/> .
@@ -37,7 +37,7 @@ where {base} = Base URI for WebIndex
       a       qb:Observation ;
       rdfs:label {String}@en ;
       cex:md5-checksum {String} ;
-      wi-onto:ref-area {Country} ;
+      wi-onto:ref-area {Area} ;
       wi-onto:ref-indicator {Indicator} ;
       wi-onto:ref-year {Int} ;
       wi-onto:sheet-type {Sheet} ;
