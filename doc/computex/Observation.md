@@ -4,7 +4,7 @@
 
 A single observation. It is usually a cell value from an excel sheet. 
 
-## URI
+## URI template
 
 ```
 {base}/v2013/observation/{Dataset}/{observationId}
@@ -19,24 +19,6 @@ where {base} = Base URI for WebIndex
 ```turtle
 {base}/v2013/observation/{sheet}/obs4567
 ```
-
-## Fields
-
-<table>
-<tr>
-<th>Property</th><th>Values</th>
-</tr>
-<tr>
-<td>
-<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">rdf:type</a>
-</td>
-<td>
-<a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>
-</td>
-</tr>
-
-</table>
-
 ## Template after dereference
 
 ```turtle
@@ -53,7 +35,6 @@ where {base} = Base URI for WebIndex
 
 {base}/v2013/observation/{Dataset}/{observationId}
       a       qb:Observation ;
-      rdfs:comment {String}@en ;
       rdfs:label {String}@en ;
       cex:md5-checksum {String} ;
       wi-onto:ref-area {Country} ;
@@ -67,4 +48,59 @@ where {base} = Base URI for WebIndex
       sdmx-concept:obsStatus {ObsStatus} .
 ```
 
+## Fields
 
+<table>
+<tr>
+<th>Property</th>
+<th>Values</th>
+<th>Comments</th>
+</tr>
+<tr>
+<td>
+<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a>
+</td>
+<td>
+<a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:label</a>
+</td>
+<td>
+"{label of indicator} in {country} during {year}"@en
+</td>
+<td>
+Generated string
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://purl.org/weso/ontology/computex#md5-checksum">cex:md5-checksum</a>
+</td>
+<td>
+{String}
+</td>
+<td>
+Generated string obtained from the MD5-checksum.
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://purl.org/weso/ontology/computex#md5-checksum">cex:md5-checksum</a>
+</td>
+<td>
+{String}
+</td>
+<td>
+Generated string obtained from the MD5-checksum.
+</td>
+</tr>
+
+<!-- TODO -->
+
+</table>
