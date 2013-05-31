@@ -1,7 +1,6 @@
-Entities
-=========
+# Entities
 
-* Observation
-* Indicator
-* Country
-* Region
+* [Observation][Observation.md]
+* [Indicator][Indicator.md]
+* [Country][Country.md]
+* [Region][Region.md]
