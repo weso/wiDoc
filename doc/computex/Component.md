@@ -1,28 +1,28 @@
-# Observation
+# Component
 
 ## Description
 
-A single observation. It is usually a cell value from an excel sheet. 
+A component. It is an aggregation of several indicators 
 
 ## URI template
 
 ```
-{base}/v2013/observation/{Dataset}/{observationId}
+{base}/v2013/component/{ComponentId}
 
 where {base} = Base URI for WebIndex
-      {Dataset} = Sheet or source from which this observation has been obtained
-	  {observationId} = Id of this observation
+      {ComponentId} = Id of the component
 ```
 
 ## Examples
 
 ```
-{base}/v2013/observation/{sheet}/obs4567
+{base}/v2013/component/{ComponentId}
 ```
+
 ## Template after dereference
 
-```template
-{base}/v2013/observation/{Dataset}/{observationId}
+``` template
+{base}/v2013/component/{ComponentId}
       cex:md5-checksum {String} ;
       dcterms:contributor wi-org:WESO ;
       dcterms:date {Int} ;
@@ -30,11 +30,9 @@ where {base} = Base URI for WebIndex
       qb:dataSet {Dataset} ;
       rdf:type qb:Observation ;
       rdfs:label {String}@en ;
-      sdmx-concept:obsStatus {ObsStatus} ;
-      wi-onto:ref-area {Area} ;
-      wi-onto:ref-computation {Computation} ;
-      wi-onto:ref-indicator {Indicator} ;
-      wi-onto:ref-year {Int} .
+      rdfs:comment {String}@en ;
+	  skos:broader {SubIndex} .
+	  
 ```
 
 ## Fields
@@ -97,18 +95,6 @@ Fixed value: Web Foundation
 
 <tr>
 <td>
-<a href="http://purl.org/linked-data/cube#dataSet>">qb:dataSet</a>
-</td>
-<td>
-Dataset
-</td>
-<td>
-Name of the dataset from which it has been obtained. It is usually a sheet in the Excel file.
-</td>
-</tr>
-
-<tr>
-<td>
 <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a>
 </td>
 <td>
@@ -125,66 +111,6 @@ Name of the dataset from which it has been obtained. It is usually a sheet in th
 </td>
 <td>
 Generated string
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="http://purl.org/linked-data/sdmx/2009/concept#obsStatus">sdmx-concept:obsStatus</a>
-</td>
-<td>
-Status
-</td>
-<td>
-Status of the observation: Raw, Imputed, Normalised, etc. 
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="http://data.webfoundation.org/webindex/ontology/ref-area">wi-onto:ref-area</a>
-</td>
-<td>
-Area: A Country or a named region
-</td>
-<td>
-Area to which the observation refers.
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="http://data.webfoundation.org/webindex/ontology/ref-computation">wi-onto:ref-computation</a>
-</td>
-<td>
-Computation
-</td>
-<td>
-Computation from which this observation has been obtained
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="http://data.webfoundation.org/webindex/ontology/ref-indicator">wi-onto:ref-indicator</a>
-</td>
-<td>
-Indicator
-</td>
-<td>
-Indicator to which the observation refers.
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="http://data.webfoundation.org/webindex/ontology/ref-indicator">wi-onto:ref-year</a>
-</td>
-<td>
-Year
-</td>
-<td>
-Year to which the observation refers.
 </td>
 </tr>
 
