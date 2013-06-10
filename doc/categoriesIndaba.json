@@ -1,10 +1,10 @@
 [
-	{"catName": "sub-index 1", "questionSetId": 664, "questionaries": [{"qId": "Q1"}, {"qId": "Q2a"}, {"qId": "Q2b"}]},
-	{"catName": "sub-index 2", "questionSetId": 665, "questionaries": [{"qId": "Q3"}, {"qId": "Q4"}]},
-	{"catName": "sub-index 3", "questionSetId": 666, "questionaries": [{"qId": "Q5a"}, {"qId": "Q5b"}, {"qId": "Q5c"}, {"qId": "Q6"}]},
-	{"catName": "sub-index 4", "questionSetId": 667, "questionaries": [{"qId": "Q7"}, {"qId": "Q8a"}, {"qId": "Q8b"}, {"qId": "Q8c"}, {"qId": "Q9a"}, {"qId": "Q9b"}, {"qId": "Q9c"}, {"qId": "Q9d"}, {"qId": "Q9e"}, {"qId": "Q9f"}, {"qId": "Q9g"}, {"qId": "Q9h"}, {"qId": "Q9i"}, {"qId": "Q9k"}, {"qId": "Q9l"}, {"qId": "Q10"}, {"qId": "Q11a"}, {"qId": "Q11b"}, {"qId": "Q11c"}, {"qId": "Q11d"}, {"qId": "Q11e"}, {"qId": "Q11f"}]},
-	{"catName": "sub-index 5", "questionSetId": 668, "questionaries": [{"qId": "Q12"}, {"qId": "Q13"}, {"qId": "Q14"}, {"qId": "Q15"}, {"qId": "Q16"}, {"qId": "Q17"}]},
-	{"catName": "sub-index 6", "questionSetId": 669, "questionaries": [{"qId": "Q18"}]},
-	{"catName": "sub-index 7", "questionSetId": 670, "questionaries": [{"qId": "Q19a"}, {"qId": "Q19b"}, {"qId": "Q19c"}, {"qId": "Q19d"}, {"qId": "Q20"}, {"qId": "Q21a"}, {"qId": "Q21b"}, {"qId": "Q21c"}, {"qId": "Q21d"}, {"qId": "Q21e"}, {"qId": "Q21f"}]},
-	{"catName": "sub-index 8", "questionSetId": 671, "questionaries": [{"qId": "Q22"}, {"qId": "Q23a"}, {"qId": "Q23b"}, {"qId": "Q23c"}, {"qId": "Q23d"}, {"qId": "Q23e"}, {"qId": "Q23f"}, {"qId": "Q23g"}, {"qId": "Q23h"}, {"qId": "Q23i"}, {"qId": "Q23j"}, {"qId": "Q24"}, {"qId": "Q25"}, {"qId": "Q26"}]}
+	{"catName": "Political Impact", "questionSetId": 672, "questionaries": [{"qId": "Q1"}, {"qId": "Q2a"}, {"qId": "Q2b"}]},
+	{"catName": "Health Impact (social\/developmental)", "questionSetId": 697, "questionaries": [{"qId": "Q3"}, {"qId": "Q4"}]},
+	{"catName": "Education Impact (social\/developmental)", "questionSetId": 676, "questionaries": [{"qId": "Q5a"}, {"qId": "Q5b"}, {"qId": "Q5c"}, {"qId": "Q6"}]},
+	{"catName": "Content and Social Impact", "questionSetId": 679, "questionaries": [{"qId": "Q7"}, {"qId": "Q8a"}, {"qId": "Q8b"}, {"qId": "Q8c"}, {"qId": "Q9a"}, {"qId": "Q9b"}, {"qId": "Q9c"}, {"qId": "Q9d"}, {"qId": "Q9e"}, {"qId": "Q9f"}, {"qId": "Q9g"}, {"qId": "Q9h"}, {"qId": "Q9i"}, {"qId": "Q9k"}, {"qId": "Q9l"}, {"qId": "Q10"}, {"qId": "Q11a"}, {"qId": "Q11b"}, {"qId": "Q11c"}, {"qId": "Q11d"}, {"qId": "Q11e"}, {"qId": "Q11f"}]},
+	{"catName": "Economic Impact", "questionSetId": 685, "questionaries": [{"qId": "Q12"}, {"qId": "Q13"}, {"qId": "Q14"}, {"qId": "Q15"}, {"qId": "Q16"}, {"qId": "Q17"}]},
+	{"catName": "Infrastructure and Pre-requisites, "questionSetId": 687, "questionaries": [{"qId": "Q18"}]},
+	{"catName": "General", "questionSetId": 689, "questionaries": [{"qId": "Q19a"}, {"qId": "Q19b"}, {"qId": "Q19c"}, {"qId": "Q19d"}, {"qId": "Q20"}, {"qId": "Q21a"}, {"qId": "Q21b"}, {"qId": "Q21c"}, {"qId": "Q21d"}, {"qId": "Q21e"}, {"qId": "Q21f"}]},
+	{"catName": "Open Data", "questionSetId": 693, "questionaries": [{"qId": "Q22"}, {"qId": "Q23a"}, {"qId": "Q23b"}, {"qId": "Q23c"}, {"qId": "Q23d"}, {"qId": "Q23e"}, {"qId": "Q23f"}, {"qId": "Q23g"}, {"qId": "Q23h"}, {"qId": "Q23i"}, {"qId": "Q23j"}, {"qId": "Q24"}, {"qId": "Q25"}, {"qId": "Q26"}]}
 ]
