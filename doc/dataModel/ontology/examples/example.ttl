@@ -2,6 +2,9 @@
 @prefix dataset: <http://data.webfoundation.org/webindex/v2013/dataset/> .
 @prefix indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> .
 @prefix obs: <http://data.webfoundation.org/webindex/v2013/observation/> .
+@prefix organization: <http://data.webfoundation.org/webindex/v2013/organization/> .
+
+
 
 @prefix cex: <http://purl.org/weso/ontology/computex#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -11,6 +14,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdmx-code:  <http://purl.org/linked-data/sdmx/2009/code#> .
 @prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
 @prefix wi-onto: <http://data.webfoundation.org/webindex/ontology/> .
 @prefix wi-org: <http://data.webfoundation.org/webindex/organization/> .
 @prefix wi-people:  <http://data.webfoundation.org/webindex/people/> .
@@ -181,3 +185,28 @@ obs:FB11 a wi-onto:Observation ;
 		 wi-onto:ref-year 2011 ;
 		 wi-onto:value 4 .
 		 
+indicator:A
+      cex:md5-checksum "MD5 checksum for indicator A" ;
+      dcterms:source "Example" ;
+      rdf:type wi-onto:Indicator ;
+      rdfs:label "Indicator A"@en ;      
+      rdfs:comment "This is a sample indicator called A"@en ;
+      time:intervalFinishes 2009 ;
+      time:intervalStarts 2012 ;
+      wi-onto:country-coverage 2 ;
+      wi-onto:provider-link organization:WESO ;
+      wi-onto:ref-source organization:WESO ;
+	  .
+		 
+indicator:B
+      cex:md5-checksum "MD5 checksum for indicator B" ;
+      dcterms:source "Example" ;
+      rdf:type wi-onto:Indicator ;
+      rdfs:label "Indicator B"@en ;      
+      rdfs:comment "This is a sample indicator called B"@en ;
+      time:intervalFinishes 2009 ;
+      time:intervalStarts 2012 ;
+      wi-onto:country-coverage 2 ;
+      wi-onto:provider-link organization:WESO ;
+      wi-onto:ref-source organization:WESO ;
+	  .

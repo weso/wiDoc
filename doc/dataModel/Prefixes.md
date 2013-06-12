@@ -14,6 +14,7 @@ They are relative to `{base}` which should point to
 @prefix dataset: <{base}/v2013/dataset/> .
 @prefix indicator: <{base}/v2013/indicator/> .
 @prefix obs: <{base}/v2013/observation/> .
+@prefix organization: <{base}/v2013/organization/> .
 ```
 
 ## External namespace prefixes
@@ -27,6 +28,7 @@ They are relative to `{base}` which should point to
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sdmx-code:  <http://purl.org/linked-data/sdmx/2009/code#> .
 @prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
 @prefix wi-onto: <http://data.webfoundation.org/webindex/ontology/> .
 @prefix wi-org: <http://data.webfoundation.org/webindex/organization/> .
 @prefix wi-people:  <http://data.webfoundation.org/webindex/people/> .

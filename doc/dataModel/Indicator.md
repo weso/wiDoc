@@ -23,10 +23,11 @@ where {base} = Base URI for WebIndex
       rdfs:label {String}@en ;      
       rdfs:comment {String}@en ;
       time:intervalFinishes {Year} ;
-      time:intervalStarts {Year} .
+      time:intervalStarts {Year} ;
       wi-onto:country-coverage {Integer} ;
-      wi-onto:provider-link {Provider}
+      wi-onto:provider-link {Provider} ;
       wi-onto:ref-source {Source} ;
+	  .
 ```
 
 ## Examples
