@@ -1,0 +1,311 @@
+@prefix wi-index:  <http://data.webfoundation.org/webindex/index/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+@prefix interval:  <http://www.w3.org/2006/time#> .
+@prefix lg:  <http://linkedgeodata.org/ontology/> .
+@prefix wi:      <http://data.webfoundation.org/webindex/> .
+@prefix wi-onto:  <http://data.webfoundation.org/webindex/ontology/> .
+@prefix wi-component:  <http://data.webfoundation.org/webindex/component/> .
+@prefix wi-indicator:  <http://data.webfoundation.org/webindex/indicator/> .
+@prefix wi-observation:  <http://data.webfoundation.org/webindex/observation/> .
+@prefix wi-area:  <http://data.webfoundation.org/webindex/area/> .
+@prefix wi-region:  <http://data.webfoundation.org/webindex/area/region/> .
+@prefix wi-country:  <http://data.webfoundation.org/webindex/area/country/> .
+@prefix wi-org:  <http://data.webfoundation.org/webindex/organization/> .
+@prefix wi-people:  <http://data.webfoundation.org/webindex/people/> .
+
+<http://data.webfoundation.org/webindex/ontology/>
+    a owl:Ontology;
+    owl:versionInfo "0.1";
+    rdfs:label "Core Webindex ontology"@en;
+    rdfs:comment "Vocabulary for describing index structures and observations."@en;
+    dcterms:created "2012-04-01"^^xsd:date;
+    dcterms:modified "2012-08-31"^^xsd:date;
+    dcterms:title "Core Webindex ontology"@en;
+    dcterms:author wi-people:Labra , wi-people:Chema, wi-org:WESO ;
+    dcterms:publisher  wi-org:WebFoundation;
+    dcterms:contributor  wi-people:Hania, wi-people:Jules ;
+    dcterms:license <http://opendatacommons.org/licenses/by/1.0/> .
+
+#Country definitions
+
+wi-onto:Region a skos:Concept, lg:Place;
+	rdfs:label "Region concept"@en; 
+	rdfs:comment "A region represents a set of countries."@en;
+	skos:narrower wi-onto:Country;
+.
+
+wi-onto:Country a skos:Concept, lg:Country;
+	skos:broader wi-onto:Region;
+	rdfs:label "Country concept"@en; 
+.
+
+wi-onto:has-iso-alpha2-code a owl:ObjectProperty, rdf:Property; 
+	rdfs:label "ISO-code-alpha 2 digit"@en; 
+	rdfs:comment "This property creates a link between a country and its ISO code (2 digit)"@en;
+	rdfs:subPropertyOf dc:identifier; 
+	rdfs:range skos:Concept; 
+. 
+
+wi-onto:has-iso-alpha3-code a owl:ObjectProperty, rdf:Property; 
+	rdfs:label "ISO-code-alpha 3 digit"@en; 
+	rdfs:comment "This property creates a link between a country and its ISO code (3 digit)"@en;
+	rdfs:subPropertyOf dc:identifier; 
+	rdfs:range skos:Concept; 
+. 
+
+wi-onto:has-country a owl:ObjectProperty, rdf:Property; 
+	rdfs:label "Country belonging to a region"@en; 
+	rdfs:comment "This property creates a link between a region and a country."@en;
+	rdfs:range skos:Concept; 
+. 
+
+wi-onto:High a skos:Concept; 
+	rdfs:label "High"@en; 
+	rdfs:comment "A high value is preferred than a lower one"@en;
+. 
+
+wi-onto:Low a skos:Concept; 
+	rdfs:label "Low"@en; 
+	rdfs:comment "A low value is preferred than a higher one"@en;
+. 
+
+
+
+wi-onto:ref-dbpedia a owl:ObjectProperty, rdf:Property; 
+	rdfs:label "URI to a DBPedia resource"@en; 
+	rdfs:comment "This property creates a link between a country an a resource comming from the DBPedia. It is a mapping-property."@en;
+	rdfs:range skos:Concept; 
+. 
+
+wi-onto:data-range a owl:ObjectProperty, rdf:Property;
+	rdfs:label "data-range"@en;
+	rdfs:comment "Range of data"@en; 
+	rdfs:range xsd:string; 
+. 
+
+wi-onto:high-low  a owl:ObjectProperty, rdf:Property;
+	rdfs:label "high-low"@en;
+	rdfs:comment "High/Low which is the best value?"@en; 
+	rdfs:range skos:Concept; 
+.
+
+wi-onto:unit a owl:ObjectProperty, rdf:Property;
+	rdfs:label "unit"@en;
+	rdfs:comment "Measure unit"@en; 
+	rdfs:range rdf:Resource; 
+.
+
+#Indicator definitions
+
+wi-onto:is-part-of  a owl:ObjectProperty, rdf:Property;
+	rdfs:label "is-part-of"@en;
+	rdfs:comment "URI to the organization that provides the indicator"@en;
+	rdfs:domain wi-onto:Component ;
+	rdfs:range wi-onto:Layer ;
+. 
+
+wi-onto:has-component  a owl:ObjectProperty, rdf:Property;
+	rdfs:label "has-component"@en;
+	rdfs:comment "URI to the organization that provides the indicator"@en;
+	rdfs:range wi-onto:Component ;
+	rdfs:domain wi-onto:Layer ;
+. 
+
+wi-onto:is-part-of owl:inverseOf wi-onto:has-component.
+
+wi-onto:ref-source  a owl:ObjectProperty, rdf:Property;
+	rdfs:label "ref-source"@en;
+	rdfs:comment "URI to the organization that provides the indicator"@en;
+. 
+
+wi-onto:ref-source-data  a owl:ObjectProperty, rdf:Property;
+	rdfs:subPropertyOf  dcterms:source;
+	rdfs:label "ref-source-data"@en;
+	rdfs:comment "URI to the data extracted out from an organization"@en;
+. 
+
+
+wi-onto:provider-link  a owl:ObjectProperty, rdf:Property;
+	rdfs:subPropertyOf  dcterms:source;
+	rdfs:label "provider-link"@en;
+	rdfs:comment "URI to the data extracted out from an organization"@en;
+. 
+
+
+wi-onto:country-coverage a owl:ObjectProperty, rdf:Property; 
+	rdfs:label "Number of coveraged countries"@en; 
+	rdfs:subPropertyOf dc:identifier; 
+	rdfs:range wi-onto:Indicator ; 
+	rdfs:domain xsd:integer;
+. 
+
+wi-onto:ref-measure a rdf:Property, qb:MeasureProperty;
+	rdfs:label "Measure use in the indicator"@en; 
+	rdfs:subPropertyOf sdmx-measure:obsValue; 
+	rdfs:domain skos:Concept.
+
+wi-onto:ref-component a rdf:Property, qb:DimensionProperty;
+	rdfs:label "URI to the component in which indicator is located"@en;
+	rdfs:domain skos:Concept; 
+	rdfs:range wi-onto:Component.
+
+
+#Observations
+
+wi-onto:ref-area a rdf:Property, qb:DimensionProperty; 
+	rdfs:label "URI to an Area"@en; 
+	rdfs:subPropertyOf sdmx-dimension:ref-area; 
+	rdfs:range skos:Concept; 
+	qb:concept sdmx-concept:ref-area . 
+
+wi-onto:ref-indicator a rdf:Property, qb:DimensionProperty; 
+	rdfs:label "URI to an Indicator"@en; 
+	rdfs:range skos:Concept; 
+ .
+
+
+wi-onto:ref-type a rdf:Property, qb:DimensionProperty; 
+	rdfs:label "URI to an Index, Component or Indicator"@en; 
+	rdfs:range skos:Concept; 
+ .
+
+wi-onto:ref-year  a rdf:Property, qb:DimensionProperty;
+	rdfs:label "Period and year (fix range to interval:Interval)"@en;
+	rdfs:subPropertyOf sdmx-dimension:ref-period;
+	rdfs:range xsd:int;
+	qb:concept sdmx-concept:ref-period . 
+
+wi-onto:ref-period  a rdf:Property, qb:DimensionProperty;
+	rdfs:label "Period"@en;
+	rdfs:subPropertyOf sdmx-dimension:ref-period;
+	rdfs:range interval:Interval;
+	qb:concept sdmx-concept:ref-period . 
+
+wi-onto:value a owl:ObjectProperty, qb:MeasureProperty;
+	rdfs:label "Observation's value"@en; 
+	rdfs:comment "Values should be accessed through a proxy class"@en;
+	rdfs:subPropertyOf sdmx-measure:obsValue; 
+.
+
+
+wi-onto:weight a owl:ObjectProperty, qb:MeasureProperty;
+	rdfs:label "Weight value"@en; 
+	rdfs:domain skos:Concept; 
+	rdfs:subPropertyOf sdmx-measure:obsValue; 
+.
+
+
+wi-onto:sheet-type  a owl:ObjectProperty, rdf:Property ;
+	rdfs:label "Link to the sheet in Excel File"@en ;
+	rdfs:domain skos:Concept; 
+.
+
+wi-onto:md5-checksum  a owl:ObjectProperty, rdf:Property ;
+	rdfs:label "MD5 Checksum of an observation"@en ;
+	rdfs:comment "It is calculated generating the MD5 hash of indicator, type of dataset, country ISO-code-3, year, value and WESO (all fields separated by #). "@en ;
+	rdfs:comment "ITUG#Raw#MLI#2010#WESO = 20488428043035183345652844592138074306"@en;
+	rdfs:comment "WBA#Raw#GRC#2007#52.62328881617524#WESO = 115753184699639282521730789828490722525"@en;
+.
+
+wi-onto:missing-notes rdfs:subPropertyOf skos:note;
+	rdfs:label "Property to annotate missing notes of indicators."@en ;
+.
+
+wi-onto:obsStatus-N a skos:Concept, sdmx-concept:Concept, sdmx-code:ObsStatus;
+    rdfs:label "Normalised status"@en;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Normalised"@en ;
+    skos:notation "N" ;
+    skos:definition "It is used when an observation status is normalised."@en ; 
+.
+
+#Taxonomy
+
+wi-onto:Index a owl:Class, rdfs:Class; 
+	rdfs:subClassOf skos:Concept ;
+	rdfs:label "Index"@en;
+	rdfs:comment "Head element of the Webindex taxonomy. It is comprised of components."@en;
+.
+wi-onto:Component a owl:Class, rdfs:Class;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:label "Component"@en;
+	rdfs:comment "Element part of an index. It is comprised of indicators."@en;
+.
+
+wi-onto:Indicator a owl:Class, rdfs:Class;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:label "Indicator"@en ;
+	rdfs:comment "Element part of a component. Observations are related to an indicator."@en;
+.
+
+wi-onto:PrimaryIndicator a owl:Class, rdfs:Class;
+	rdfs:subClassOf wi-onto:Indicator ;
+	rdfs:label "Primary Indicator"@en ;
+	rdfs:comment "This indicator is established by the Webfoundation."@en;
+.
+
+wi-onto:SecondaryIndicator a owl:Class, rdfs:Class;
+	rdfs:subClassOf wi-onto:Indicator ;
+	rdfs:label "Secondary Indicator"@en ;
+	rdfs:comment "This indicator is established by third parties such as ITU, UN, etc. Its observations are part of a component."@en;
+.
+
+
+wi-onto:ExternalIndicator a owl:Class, rdfs:Class;
+	rdfs:subClassOf wi-onto:Indicator ;
+	rdfs:label "External Indicator"@en ;
+	rdfs:comment "This indicator is established by third parties such as Worldbank but its observations are not part of a component."@en;
+.
+
+wi-onto:SheetData a owl:Class, rdfs:Class;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:label "Status of data depending of the sheet"@en;
+.
+
+wi-onto:Raw a wi-onto:SheetData ;
+	rdfs:label "Raw data"@en ;
+	rdfs:comment "Raw data values that have been collected from a datasource without any normalisation process."@en ;
+.
+
+wi-onto:Imputed a wi-onto:SheetData ;
+	rdfs:label "Imputed data"@en ;
+	rdfs:comment "Imputed data values that have been processed from their raw version to generate an imputed version."@en ;
+.
+
+wi-onto:Normalised a wi-onto:SheetData ;
+	rdfs:label "Normalised data"@en ;
+	rdfs:comment "Normalised data values that have been processed to generate a normalised version."@en ;
+.
+
+wi-onto:Score a wi-onto:SheetData ;
+	rdfs:label "Score data"@en ;
+	rdfs:comment "Score data values that have been processed to generate the webindex after the computation process."@en ;
+.
+
+wi-onto:Zscore a wi-onto:SheetData ;
+	rdfs:label "Zscore data"@en ;
+	rdfs:comment "Zscore data values that have been processed to generate the webindex after the computation process using the Zscore."@en ;
+.
+
+wi-onto:Ordered a wi-onto:SheetData ;
+	rdfs:label "Ordered data"@en ;
+        rdfs:comment "Ordered data, set of values that have been sorted to be presented."@en ;
+.
+
