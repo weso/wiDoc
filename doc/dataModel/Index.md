@@ -4,4 +4,6 @@ This document contains the domain model for the Web Index project. The model is 
 
 * [List of entities](Entities.md)
 * [Namespace prefix](Prefixes.md)
+* [Ontology](ontology)
+* [Examples](ontology/examples)
 * [Some notes and comments](Notes.md)

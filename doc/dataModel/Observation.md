@@ -25,7 +25,7 @@ where {base} = Base URI for WebIndex
 {base}/v2013/observation/{Dataset}/{observationId}
       cex:md5-checksum {String} ;
       dcterms:contributor wi-org:WESO ;
-      dcterms:date {Int} ;
+      dcterms:created {Int} ;
       dcterms:publisher wi-org:WebFoundation ;
       qb:dataSet {Dataset} ;
       rdf:type qb:Observation ;
@@ -36,6 +36,7 @@ where {base} = Base URI for WebIndex
       wi-onto:ref-computation {Computation} ;
       wi-onto:ref-indicator {Indicator} ;
       wi-onto:ref-year {Int} .
+	  wi-onto:value {Decimal } .
 ```
 
 ## Fields
@@ -45,6 +46,7 @@ where {base} = Base URI for WebIndex
 <th>Property</th>
 <th>Values</th>
 <th>Comments</th>
+<th>Mandatory/Optional</th>
 </tr>
 
 <tr>
@@ -56,6 +58,9 @@ where {base} = Base URI for WebIndex
 </td>
 <td>
 Generated string obtained from the MD5-checksum.
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
@@ -69,18 +74,43 @@ Generated string obtained from the MD5-checksum.
 <td>
 Fixed value: WESO or other contributors. 
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
 <td>
-<a href="http://purl.org/dc/terms/date">dcterms:date</a>
+<a href="http://purl.org/dc/terms/created">dcterms:created</a>
 </td>
 <td>
 Date
 </td>
 <td>
-Date in which the observation has been asserted. If we don't know the original date, we could 
+Date in which the observation has been created. 
+If we don't know the original date, we could 
  include the timestamp in which the observation has been created in RDF.
+</td>
+<td>
+Mandatory
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://purl.org/dc/terms/modified">dcterms:modified</a>
+</td>
+<td>
+Date
+</td>
+<td>
+Date in which the observation has been modified. 
+</td>
+<td>
+Optional
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
@@ -94,6 +124,9 @@ Date in which the observation has been asserted. If we don't know the original d
 <td>
 Fixed value: Web Foundation
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -106,6 +139,9 @@ Dataset
 <td>
 Name of the dataset from which it has been obtained. It is usually a sheet in the Excel file.
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -115,6 +151,9 @@ Name of the dataset from which it has been obtained. It is usually a sheet in th
 <td>
 <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -123,6 +162,9 @@ Name of the dataset from which it has been obtained. It is usually a sheet in th
 </td>
 <td>
 <a href="http://data.webfoundation.org/webindex/ontology/">wi-onto:Observation</a>
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
@@ -136,6 +178,9 @@ Name of the dataset from which it has been obtained. It is usually a sheet in th
 <td>
 Generated string
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -146,7 +191,13 @@ Generated string
 Status
 </td>
 <td>
-Status of the observation: Raw, Imputed, Normalised, etc. 
+Status of the observation: 
+  sdmx-code:obsStatus-A (Raw), 
+  sdmx-code:obsStatus-I (Imputed), 
+  wi-onto:obsStatus-N (Normalized). 
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
@@ -160,6 +211,9 @@ Area: A Country or a named region
 <td>
 Area to which the observation refers.
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -171,6 +225,9 @@ Computation
 </td>
 <td>
 Computation from which this observation has been obtained
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
@@ -184,6 +241,9 @@ Indicator
 <td>
 Indicator to which the observation refers.
 </td>
+<td>
+Mandatory
+</td>
 </tr>
 
 <tr>
@@ -195,6 +255,24 @@ Year
 </td>
 <td>
 Year to which the observation refers.
+</td>
+<td>
+Mandatory
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://data.webfoundation.org/webindex/ontology/value">wi-onto:value</a>
+</td>
+<td>
+Decimal
+</td>
+<td>
+Value of the observation
+</td>
+<td>
+Mandatory
 </td>
 </tr>
 
