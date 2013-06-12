@@ -29,6 +29,7 @@ where {base} = Base URI for WebIndex
       dcterms:publisher wi-org:WebFoundation ;
       qb:dataSet {Dataset} ;
       rdf:type qb:Observation ;
+      rdf:type wi-onto:Observation ;
       rdfs:label {String}@en ;
       sdmx-concept:obsStatus {ObsStatus} ;
       wi-onto:ref-area {Area} ;
@@ -113,6 +114,15 @@ Name of the dataset from which it has been obtained. It is usually a sheet in th
 </td>
 <td>
 <a href="http://purl.org/linked-data/cube#Observation">qb:Observation</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a>
+</td>
+<td>
+<a href="http://data.webfoundation.org/webindex/ontology/">wi-onto:Observation</a>
 </td>
 </tr>
 

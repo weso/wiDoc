@@ -1,4 +1,4 @@
-@prefix cex: <http://purl.org/weso/ontology/computex#> 
+@prefix cex: <http://purl.org/weso/ontology/computex#> .
 @prefix country: <http://data.webfoundation.org/webindex/v2013/country/> .
 @prefix indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> .
 @prefix obs: <http://data.webfoundation.org/webindex/v2013/observation/> .
@@ -7,33 +7,69 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wi-onto: <http://data.webfoundation.org/webindex/ontology/> .
 
-obs:EA09 cex:value 2 .
-obs:EA09 cex:country country:ESP .
-obs:EA09 cex:year 2009 .
-obs:EA09 cex:indicator indicator:A .
 
-obs:EB09 cex:value 1 .
-obs:EB09 cex:country country:ESP .
-obs:EB09 cex:year 2009 .
-obs:EB09 cex:indicator indicator:B .
+: a owl:Ontology ;
+  owl:imports <../ontology.ttl> .
 
-obs:EC09 cex:value 3 .
-obs:EC09 cex:country country:ESP .
-obs:EC09 cex:year 2009 .
-obs:EC09 cex:indicator indicator:C .
+obs:EA09 a wi-onto:Observation ;
+         cex:value 4 ;
+		 cex:country country:ESP ;
+		 cex:year 2009 ;
+		 cex:indicator indicator:A .
 
-obs:EA09 cex:value 2 .
-obs:EA09 cex:country country:ESP .
-obs:EA09 cex:year 2009 .
-obs:EA09 cex:indicator indicator:A .
+obs:EB09 a wi-onto:Observation ; 
+		 cex:value 6 ;
+		 cex:country country:ESP ;
+		 cex:year 2009 ;
+ 		 cex:indicator indicator:B .
 
-obs:EB09 cex:value 1 .
-obs:EB09 cex:country country:ESP .
-obs:EB09 cex:year 2009 .
-obs:EB09 cex:indicator indicator:B .
+obs:FA09 a wi-onto:Observation ; 
+		 cex:value 2 ;
+		 cex:country country:FRA ;
+		 cex:year 2009 ;
+		 cex:indicator indicator:A .
 
-obs:EC09 cex:value 3 .
-obs:EC09 cex:country country:ESP .
-obs:EC09 cex:year 2009 .
-obs:EC09 cex:indicator indicator:C .
+obs:FB09 a wi-onto:Observation ; 
+		 cex:value 8 ;
+		 cex:country country:FRA ;
+		 cex:year 2009 ;
+		 cex:indicator indicator:B .
+
+
+obs:EA10 a wi-onto:Observation ;
+		 cex:value 5 ;
+		 cex:country country:ESP ;
+		 cex:year 2010 ;
+		 cex:indicator indicator:A .
+
+obs:EB10 a wi-onto:Observation ;
+		 cex:value 1 ;
+		 cex:country country:ESP ;
+		 cex:year 2010 ;
+		 cex:indicator indicator:B .
+
+obs:EA11 a wi-onto:Observation ;
+		 cex:value 3 ;
+         cex:country country:ESP ;
+         cex:year 2011 ;
+         cex:indicator indicator:A .
+
+obs:EB11 a wi-onto:Observation ;
+		 cex:value 6 ;
+		 cex:country country:ESP ;
+		 cex:year 2011 ;
+		 cex:indicator indicator:B .
+
+obs:FA11 a wi-onto:Observation ;
+		 cex:value 8 ;
+		 cex:country country:FRA ;
+		 cex:year 2011 ;
+		 cex:indicator indicator:A .
+
+obs:FB11 a wi-onto:Observation ;
+		 cex:value 4 ;
+		 cex:country country:FRA ;
+		 cex:year 2011 ;
+		 cex:indicator indicator:B .

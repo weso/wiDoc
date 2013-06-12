@@ -1,35 +1,46 @@
-# Component
+# Dataset
 
 ## Description
 
-A component. It is an aggregation of several indicators 
+A Dataset.  
 
 ## URI template
 
 ```
-{base}/v2013/component/{ComponentId}
+{base}/v2013/dataset/{DatasetId}
 
 where {base} = Base URI for WebIndex
-      {ComponentId} = Id of the component
+      {DatasetId} = Id of the component
 ```
 
 ## Examples
 
 ```
-{base}/v2013/component/{ComponentId}
+{base}/v2013/dataset/{DatasetId}
 ```
 
 ## Template after dereference
 
 ``` template
-{base}/v2013/component/{ComponentId}
+{base}/v2013/dataset/{DatasetId}
       cex:md5-checksum {String} ;
       dcterms:contributor wi-org:WESO ;
       dcterms:date {Int} ;
       dcterms:publisher wi-org:WebFoundation ;
       qb:dataSet {Dataset} ;
-      rdf:type wi-onto:Component ;
-      rdfs:label {String}@en 
+      rdf:type qb:DataSetDefinition ;
+      rdf:type wi-onto:Dataset ;
+      qb:component
+              [ qb:dimension wi-onto:ref-area ;
+                qb:order "2"^^xsd:long
+              ] ;
+      qb:component
+              [ qb:dimension wi-onto:ref-area ;
+                qb:order "1"^^xsd:long
+              ] ;
+      qb:component
+              [ qb:measure wi-onto:ref-indicator
+              ]
       .
 	  
 ```
@@ -97,22 +108,13 @@ Fixed value: Web Foundation
 <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">rdf:type</a>
 </td>
 <td>
-<a href="http://data.webfoundation.org/webindex/ontology/Component">wi-onto:Component</a>
+<a href="http://data.webfoundation.org/webindex/ontology/Component">wi-onto:Dataset</a>
 </td>
 <td>
 Fixed value
 </td>
 </tr>
 
-<tr>
-<td>
-<a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a>
-</td>
-<td>
- String     
-</td>
-<td>
-</td>
-</tr>
+<tr><td>TODO</td></tr>
 
 </table>

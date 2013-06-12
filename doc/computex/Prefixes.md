@@ -13,5 +13,6 @@
 @prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
 @prefix wi-onto: <http://data.webfoundation.org/webindex/ontology/> .
 @prefix wi-org: <http://data.webfoundation.org/webindex/organization/> .
+@prefix wi-people:  <http://data.webfoundation.org/webindex/people/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 ```
