@@ -4,6 +4,5 @@ This document contains the domain model for the Web Index project. The model is 
 
 * [List of entities](dataModel/Entities.md)
 * [Namespace prefix](dataModel/Prefixes.md)
-* [Ontology](dataModel/ontology)
-* [Examples](dataModel/ontology/examples)
+* [Ontology](http://purl.org/weso/ontology/computex)
 * [Some notes and comments](dataModel/Notes.md)

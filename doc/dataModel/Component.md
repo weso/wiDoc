@@ -25,7 +25,7 @@ where {base} = Base URI for WebIndex
 {base}/v2013/component/{ComponentId}
       cex:md5-checksum {String} ;
       dcterms:contributor wi-org:WESO ;
-      dcterms:date {Int} ;
+      dcterms:created {Date} ;
       dcterms:publisher wi-org:WebFoundation ;
       qb:dataSet {Dataset} ;
       rdf:type wi-onto:Component ;
@@ -69,7 +69,7 @@ Fixed value: WESO or other contributors.
 
 <tr>
 <td>
-<a href="http://purl.org/dc/terms/date">dcterms:date</a>
+<a href="http://purl.org/dc/terms/created">dcterms:created</a>
 </td>
 <td>
 Date

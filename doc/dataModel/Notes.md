@@ -25,3 +25,11 @@
 
 1. We can omit the wi-onto:weight declaration from component. I think we should have weight schemes which are 
   assigned to components, not components assigned to weights.
+
+## Countries
+
+1.- We include a reference to DBPedia. Should we also include geo:lat/geo:long given 
+ they can be obtained from DBPedia or other sources?
+ 
+2.- Should we include links to other sources. For example, geonames?
+

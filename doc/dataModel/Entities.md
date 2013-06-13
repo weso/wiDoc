@@ -9,7 +9,6 @@
 
 ## Areas: regions and countries
 
-* [Area](Area.md): An area can be a Country or a named region.
 * [Country](Country.md): A country. Example: Spain
 * [Region](Region.md). A named region. Example: Europe
 

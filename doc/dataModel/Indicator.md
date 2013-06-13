@@ -19,12 +19,14 @@ where {base} = Base URI for WebIndex
 {base}/v2013/indicator/{IndicatorId}
       cex:md5-checksum {String} ;
       dcterms:source {URI} ;
+      dcterms:created {Date} ;
       rdf:type {IndicatorType} ;
       rdfs:label {String}@en ;      
       rdfs:comment {String}@en ;
       time:intervalFinishes {Year} ;
       time:intervalStarts {Year} ;
       wi-onto:country-coverage {Integer} ;
+	  wi-onto:high-low {HighLow} ;
       wi-onto:provider-link {Provider} ;
       wi-onto:ref-source {Source} ;
 	  .
@@ -67,6 +69,18 @@ Source from which the indicator values have been obtained
 
 <tr>
 <td>
+dcterms:created
+</td>
+<td>
+{URI}
+</td>
+<td>
+Date of creation
+</td>
+</tr>
+
+<tr>
+<td>
 rdf:type
 </td>
 <td>
@@ -79,7 +93,6 @@ Indicator type: Primary, Secondary
 rdfs:label
 </td>
 <td>
-"{label of indicator} in {country} during {year}"@en
 </td>
 <td>
 Generated string
@@ -107,6 +120,17 @@ Timestamp
 </td>
 <td>
 End of observation period 
+</td>
+</tr>
+
+<tr>
+<td>
+wi-onto:high-low
+</td>
+<td>
+wi-onto:High wi-onto:Low
+</td>
+<td>
 </td>
 </tr>
 

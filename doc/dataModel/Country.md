@@ -1,52 +1,45 @@
-# Dataset
+# Country
 
 ## Description
 
-A Dataset.  
+A country.  
 
 ## URI template
 
 ```
-{base}/v2013/dataset/{DatasetId}
+{base}/v2013/country/{CountryId}
 
 where {base} = Base URI for WebIndex
-      {DatasetId} = Id of the component
+      {CountryId} = Id of the country
 ```
 
 ## Examples
 
 ```
-{base}/v2013/dataset/{DatasetId}
+{base}/v2013/country/{CountryId}
 ```
 
 ## Template after dereference
 
 ``` template
-{base}/v2013/dataset/{DatasetId}
+{base}/v2013/country/{CountryId}
       cex:md5-checksum {String} ;
       dcterms:contributor wi-org:WESO ;
       dcterms:created {Date} ;
       dcterms:publisher wi-org:WebFoundation ;
-      rdf:type qb:DataSetDefinition ;
-      rdf:type wi-onto:Dataset ;
-      qb:component
-              [ qb:dimension wi-onto:ref-area ;
-                qb:order "1"^^xsd:long
-              ] ;
-      qb:component
-              [ qb:dimension wi-onto:ref-area ;
-                qb:order "2"^^xsd:long
-              ] ;
-	  . . .
-      qb:component
-              [ qb:measure wi-onto:ref-indicator
-              ]
+      rdf:type wi-onto:Country ;
+	  rdfs:label "{String}"@en ;
+	  wi-onto:has-iso-alpha2-code {String} ;
+	  wi-onto:has-iso-alpha3-code {String} ;
+	  wi-onto:ref-dbpedia {URI} ;
+	  geo:lat {Decimal} ;    # I am not sure if we should include lat/long here...
+	  geo:long {Decimal} ;
       .
 ```
 
 ## Fields
 
-TODO...this part is not yet finished...
+TODO...this part isn't yet finished...
 
 <table>
 <tr>
