@@ -6,6 +6,7 @@
 * [Component](component.md): A component aggregates several indicators and is part of a sub-index. Example: Communications Infrastructure
 * [Subindex](subindex.md): A sub-index aggregates several components. Example: Readiness
 * [Index](index.md): An index aggregates several sub-indexes.
+* [Ranking](ranking.md): An list of observations ordered
 
 ## Areas: regions and countries
 

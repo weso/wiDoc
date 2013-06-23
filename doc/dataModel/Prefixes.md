@@ -16,6 +16,10 @@ They are relative to `{base}` which should point to
 @prefix indicator: <{base}/v2013/indicator/> .
 @prefix obs: <{base}/v2013/observation/> .
 @prefix organization: <{base}/v2013/organization/> .
+@prefix weightSchema: <{base}/v2013/weightSchema/> .
+@prefix subindex: <{base}/v2013/subindex/> .
+@prefix index: <{base}/v2013/index/> .
+@prefix ranking: <{base}/v2013/ranking/> .
 ```
 
 ## External namespace prefixes
