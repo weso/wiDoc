@@ -6,8 +6,6 @@
    is asserted (timestamp?) while
     `wi-onto:ref-year` should be the year to which the observation is referring.
 	
-2. Should we indicate missing observations? It facilitates the computation.
-
 ## Indicators.
 	
 1. Is there any difference between `wi-onto:provider-link` and `wi-onto:ref-source` ? 
