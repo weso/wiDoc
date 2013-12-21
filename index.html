@@ -1,69 +1,398 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>WebIndex Data Portal Documentation by weso</title>
+    <title>Web Index Data Portal Documentation</title>
+    <meta charset='utf-8'>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+	<link rel="stylesheet" href="stylesheets/codemirror.css"> 
+	<script src="javascripts/codemirror-compressed.js"></script>
+	<script src="http://codemirror.net/mode/sparql/sparql.js"></script>
+	<script src="http://codemirror.net/addon/runmode/runmode.js"></script>
+	<script src="http://codemirror.net/addon/runmode/colorize.js"></script>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <script class='remove'>
+      var respecConfig = {
+	  //    additionalCopytirhgHolders="",
+          specStatus: "unofficial",
+          shortName:  "WI-Doc",
+          editors: [
+                {   name:       "Jose Emilio Labra Gayo",
+                    url:        "http://di.uniovi.es/~labra",
+                    company:    "University of Oviedo - WESO Research Group",
+                    companyURL: "http://weso.es" }
+          ],
+          previousMaturity: "FPWD",
+	      previousPublishDate:  "2013-12-18",
+          wg:           "Web Index",
+          wgURI:        "http://www.webfoundation.org",
+//          wgPublicList: "public-animals",
+//          wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/424242/status",
+      };
+    </script>
+	<link rel="stylesheet" href="stylesheets/codemirror.css">
+    <script src="javascripts/codemirror.js"></script>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>WebIndex Data Portal Documentation</h1>
-        <p>Web Index Data Portal Documentation</p>
+    <section id='abstract'>
+      <p>
+        This document describes the Data Portal developed as part of the Web Index project
+      </p>
+    </section>
 
-        <p class="view"><a href="https://github.com/weso/wiDoc">View the Project on GitHub <small>weso/wiDoc</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/weso/wiDoc/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/weso/wiDoc/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/weso/wiDoc">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="web-index-data-portal-documentation" class="anchor" href="#web-index-data-portal-documentation"><span class="octicon octicon-link"></span></a>Web Index Data Portal Documentation</h3>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/weso">weso</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <section id='sotd'>
+      <p>Initial version</p>
+    </section>
     
-  </body>
+    <section class='informative'>
+      <h2>Introduction</h2>
+      <p>
+	  The <a href="http://thewebindex.org">WebIndex Project</a> has been developed by <a href="http://www.webfoundation.org">The World Wide Web Foundation</a>. 
+	  Taking the format of an 81 country ranking, the Web Index is the world’s first measure of the 
+	  World Wide Web’s contribution to development and human rights globally. 
+	  Scores are given in the areas of 
+	   access; 
+	   freedom and openness; 
+	   relevant content; and 
+	   empowerment. 
+	   First released in 2012, 
+	   the 2013 Index has been expanded and refined to include 20 new countries and 
+	   features an enhanced data set, particularly in the areas of gender, 
+	   Open Data, 
+	   privacy rights and 
+	   security.
+      </p>
+	  <p>The sources of data are indicators that can be primary (questionaries made to experts) 
+	  or secondary (external sources)</p>
+	  <p>The computation structure of the web index is developed in a hierarchical way, where  
+	   indicators (primary or secondary) are grouped into components, components are grouped into 
+	   subindexes and finally, subindexes are grouped into the index.</p>
+	  <p>The WebIndex data portal follows the RDF Data Cube vocabulary where there are 
+	   single observations with different dimensions grouped by slices and datasets.</p>
+
+	   </section>
+    
+     <section>
+<h2>Namespace Prefixes</h2>
+<p>The list of PREFIX employed in Web Index is available here in 
+	   <a href="http://156.35.82.103:9003/prefixes/turtle">TURTLE</a>
+	   and
+	   <a href="http://156.35.82.103:9003/prefixes/sparql">SPARQL</a>
+	   syntax.
+      </p>
+     </section>
+	 
+<section>
+<h2>Base URI</h2>
+<p>The base URI of the WebIndex 2013 version is 
+<code><a href="http://data.webfoundation.org/webindex/v2013">http://data.webfoundation.org/webindex/v2013</a></code>. 
+Along this document <code>{base}</code> refers to the previous URI.
+</p>
+</section>
+
+<section>
+<h2>Entities</h2>
+<p>For each entity we give a description, the URI template, an example and a Schema using 
+ the <a href="http://www.w3.org/2013/ShEx/Primer.html">ShEx RDF schema language</a></p>
+
+<section>
+<h2>Observations</h2>
+<p>A single observation. It is usually a cell value from an excel sheet.
+<p>There are three main dimensions for each observation:
+	  <ul>
+	  <li><a href="http://data.webfoundation.org/ontology/ref-area">wf-onto:ref-area</a>: Reference area (usually a country)</li>
+	  <li><a href="http://data.webfoundation.org/ontology/ref-year">wf-onto:ref-year</a>: Reference Year</li>
+	  <li><a href="http://purl.org/weso/ontology/computex#indicator">cex:indicator</a>: Indicator (it can be also a component, subindex or index)</li>
+	  </ul>
+<p>An observation has a <a href="http://purl.org/weso/ontology/computex#indicator">cex:value</a> 
+ which is a number</p>
+
+<section> 
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/observation/{observationId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{Dataset} = Sheet or source from which this observation has been obtained
+{observationId} = Id of this observation
+</pre>
+</section>
+
+<section>		  
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/observation/obs6704">http://data.webfoundation.org/webindex/v2013/observation/obs6704</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Observation> { 
+      cex:md5-checksum xsd:string ,                    # MD5 from observationId#weso#Area#year     
+      cex:computation @&lt;Computation> ,              # 
+      dcterms:issued xsd:int ,                         # timestamp 
+      dcterms:publisher wi-org:WebFoundation , 
+      qb:dataSet @&lt;Dataset> ,                       # Represents the dataset to which an observation belongs
+      rdf:type ( qb:Observation wi-onto:Observation ),
+      rdfs:label xsd:string@en ,
+      sdmx-concept:obsStatus @&lt;ObsStatus> ,			 
+      wi-onto:ref-area @&lt;Area>,                     # In WebIndex, the ref-area are usually countries 
+      wi-onto:ref-indicator 
+	     ( <a href="#indicator">@&lt;Indicator></a>
+		 | <a href="#component">@&lt;Component></a> 
+		 | <a href="#subindex">@&lt;Subindex></a> 
+		 | <a href="#index">@&lt;Index></a>) ,          # Indicators can be single indicators, components, subindexes or indexes
+      wi-onto:ref-year xsd:int ,                       # Year of the observation
+      cex:value xsd:double                             # Value of the observation
+ } </pre>
+</section>
+</section>
+
+<section>
+<h2 id="indicator">Indicators</h2>
+<p>There are primary indicators (answers from questionnaries) and 
+ secondary indicators (obtained from external sources). 
+ Indicators are grouped into <a href="#component">components</a>.
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/indicator/{indicatorId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{indicatorId} = Id of this indicator
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/indicator/WEF_L">http://data.webfoundation.org/webindex/v2013/indicator/WEF_L</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Indicator> { 
+      wf-onto:country-coverage xsd:integer ,              # 
+      wf-onto:provider-link <a href="organization">@&lt;Organization></a> ,
+	  wf-onto:republish xsd:integer ,
+	  cex:component <a href="#component">@&lt;Component></a> ,
+	  cex:highLow (cex:High cex:Low) ,
+	  rdf:type (wf-onto:PrimaryIndicator 
+				wf-onto:SecondaryIndicator ),
+	  rdfs:label xsd:string,
+	  rdfs:comment xsd:string,
+	  skos:notation xsd:string,
+	  time:intervalStarts xsd:integer,
+	  time:intervalEnds xsd:integer
+ } </pre>
+</section>
+</section>
+
+<section>
+<h2 id="component">Components</h2>
+<p>Components are grouped into subindexes.</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/component/{componentId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{componentId} = Id of this component
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/component/economic">http://data.webfoundation.org/webindex/v2013/component/economic</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Component> { 
+      wf-onto:order xsd:integer ,              # In which position is should be visualized
+      dcterms:contributor wf-onto:WESO ,
+	  dcterms:issued xsd:integer ,             # timestamp
+	  cex:element <a href="#indicator">@&lt;Indicator></a> ,
+	  rdf:type cex:Component, 
+	  rdfs:label xsd:string,
+	  skos:notation xsd:string,
+ } </pre>
+</section>
+</section>
+
+<section>
+<h2 id="subindex">Subindexes</h2>
+<p>Subindexes form the index</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/subindex/{subindexId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{subindexId} = Id of this subindex
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/subindex/access">http://data.webfoundation.org/webindex/v2013/subindex/access</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Subindex> { 
+      wf-onto:order xsd:integer ,              # In which position is should be visualized
+      wf-onto:colour xsd:string ,              # In which colour is should be visualized
+	  cex:element @&lt;Component> ,
+	  rdf:type cex:SubIndex, 
+	  rdfs:label xsd:string,
+	  skos:notation xsd:string,
+ } </pre>
+</section>
+</section>
+
+<section>
+<h2 id="index">Index</h2>
+<p>Index</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/index/{indexId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{indexId} = Id of this index
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/index/index">http://data.webfoundation.org/webindex/v2013/index/index</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;index> { 
+      wf-onto:order xsd:integer ,              # In which position is should be visualized
+      wf-onto:colour xsd:string ,              # In which colour is should be visualized
+	  cex:element @&lt;Subindex> ,
+	  rdf:type cex:Index, 
+	  rdfs:label xsd:string,
+	  skos:notation xsd:string,
+ } </pre>
+</section>
+</section>
+
+<section>
+<h2 id="country">Country</h2>
+<p>Country concept</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/country/{countryCode}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{countryCode} = Iso-Code Alpha 3
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/country/ESP">http://data.webfoundation.org/webindex/v2013/country/ESP</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Country> { 
+   rdf:type	                   wf-onto:Country,
+   wf-onto:has-iso-alpha2-code xsd:string ,
+   wf-onto:has-iso-alpha3-code xsd:string ,
+   rdfs:label				   xsd:string,
+ } </pre>
+</section>
+
+
+</section>
+
+<section>
+<h2 id="country">Region</h2>
+<p>Region concept</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/region/{regionId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{regionId} = Region Id
+</pre>
+</section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/region/Europe">http://data.webfoundation.org/webindex/v2013/region/Europe</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Region> { 
+   rdf:type	                   wf-onto:Region,
+   rdfs:label				   xsd:string,
+   wf-onto:has-country		   @&lt;Country>
+ } </pre>
+</section>
+
+</section>
+	   
+<section>
+<h2>Computex Ontology</h2>
+	 
+<p>The computex Ontology is available at 
+<a href="http://www.essepuntato.it/lode/owlapi/http://purl.org/weso/ontology/computex#">http://purl.org/weso/ontology/computex#</a>
+</p>
+</section>
+
+<section>
+<h2>Example queries</h2>
+<p>This section contains a list of common queries. The queries appear without their prefixes.</p>
+
+<section>
+<h2>List all observations</h2>
+<pre data-lang="application/x-sparql-query">
+SELECT * WHERE {
+ ?x a qb:Observation .
+}
+</pre>
+</section>
+
+
+</section>
+
+</body>
+<script>
+ setTimeout(function(){CodeMirror.colorize();}, 20);
+</script>
+
 </html>
