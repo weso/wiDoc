@@ -1,0 +1,194 @@
+PREFIX cex: <http://purl.org/weso/ontology/computex#> 
+PREFIX dbpedia: <http://dbpedia.org/resource/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX odb: <http://data.webfoundation.org/odb/v2013/> 
+PREFIX odbcomponent: <http://data.webfoundation.org/odb/v2013/component/> 
+PREFIX odbcomputation: <http://data.webfoundation.org/odb/v2013/computation/> 
+PREFIX odbcountry: <http://data.webfoundation.org/odb/v2013/country/> 
+PREFIX odbdataset: <http://data.webfoundation.org/odb/v2013/dataset/> 
+PREFIX odbindex: <http://data.webfoundation.org/odb/v2013/index/> 
+PREFIX odbindicator: <http://data.webfoundation.org/odb/v2013/indicator/> 
+PREFIX odbobs: <http://data.webfoundation.org/odb/v2013/observation/> 
+PREFIX odbranking: <http://data.webfoundation.org/odb/v2013/ranking/> 
+PREFIX odbregion: <http://data.webfoundation.org/odb/v2013/region/> 
+PREFIX odbslice: <http://data.webfoundation.org/odb/v2013/slice/> 
+PREFIX odbweightSchema: <http://data.webfoundation.org/odb/v2013/weightSchema/> 
+PREFIX org: <http://www.w3.org/ns/org> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> 
+PREFIX sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> 
+PREFIX sdmxconcept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+PREFIX sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX test: <http://data.webfoundation.org/test/v2013/> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX webindex: <http://data.webfoundation.org/webindex/v2013/> 
+PREFIX wfonto: <http://data.webfoundation.org/ontology/> 
+PREFIX wforg: <http://data.webfoundation.org/organization/> 
+PREFIX wfpeople: <http://data.webfoundation.org/people/> 
+PREFIX wicomponent: <http://data.webfoundation.org/webindex/v2013/component/> 
+PREFIX wicomputation: <http://data.webfoundation.org/webindex/v2013/computation/> 
+PREFIX wicountry: <http://data.webfoundation.org/webindex/v2013/country/> 
+PREFIX widataset: <http://data.webfoundation.org/webindex/v2013/dataset/> 
+PREFIX wiindex: <http://data.webfoundation.org/webindex/v2013/index/> 
+PREFIX wiindicator: <http://data.webfoundation.org/webindex/v2013/indicator/> 
+PREFIX wiobs: <http://data.webfoundation.org/webindex/v2013/observation/> 
+PREFIX wiranking: <http://data.webfoundation.org/webindex/v2013/ranking/> 
+PREFIX wiregion: <http://data.webfoundation.org/webindex/v2013/region/> 
+PREFIX wislice: <http://data.webfoundation.org/webindex/v2013/slice/> 
+PREFIX wiweightSchema: <http://data.webfoundation.org/webindex/v2013/weightSchema/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+<Observation> { 
+      cex:md5-checksum xsd:string ,                    # MD5 from observationId#weso#Area#year     
+      cex:computation @<Computation> ,                 # 
+      dcterms:issued xsd:int ,                         # timestamp 
+      dcterms:publisher wforg:WebFoundation , 
+      qb:dataSet @<Dataset> ,                          # Represents the dataset to which an observation belongs
+      rdf:type ( qb:Observation wfonto:Observation ),
+      rdfs:label xsd:string ,
+      sdmxconcept:obsStatus @<ObsStatus> ,          
+      wfonto:ref-area @<Area>,              # In WebIndex, the ref-area are usually countries 
+      wfonto:ref-indicator @<Indicator>,    # Indicators can be single indicators, components, subindexes or indexes
+      wfonto:ref-year xsd:int ,             # Year of the observation
+      cex:value xsd:double                  # Value of the observation
+ } 
+ 
+<Indicator> { 
+      wfonto:country-coverage xsd:integer ,              # 
+      wfonto:provider-link @<Organization> ,
+      wfonto:republish xsd:integer ,
+      cex:component @<Component> ,
+      cex:highLow (cex:High cex:Low) ,
+      rdf:type (wfonto:PrimaryIndicator 
+                wfonto:SecondaryIndicator ),
+      rdfs:label xsd:string,
+      rdfs:comment xsd:string,
+      skos:notation xsd:string,
+      time:intervalStarts xsd:integer,
+      time:intervalEnds xsd:integer
+ } 
+ 
+ <Component> { 
+      wfonto:order xsd:integer ,              # In which position is should be visualized
+      dcterms:contributor wfonto:WESO ,
+      dcterms:issued xsd:integer ,             # timestamp
+      cex:element @<Indicator> ,
+      rdf:type cex:Component, 
+      rdfs:label xsd:string,
+      skos:notation xsd:string
+ } 
+ 
+ 
+ <Subindex> { 
+      wfonto:order xsd:integer ,              # In which position is should be visualized
+      wfonto:colour xsd:string ,              # In which colour is should be visualized
+      cex:element @<Component> ,
+      rdf:type cex:SubIndex, 
+      rdfs:label xsd:string,
+      skos:notation xsd:string
+ } 
+ 
+ 
+ <index> { 
+      wfonto:order xsd:integer ,              # In which position is should be visualized
+      wfonto:colour xsd:string ,              # In which colour is should be visualized
+      cex:element @<Subindex> ,
+      rdf:type cex:Index, 
+      rdfs:label xsd:string,
+      skos:notation xsd:string
+ } 
+ 
+ <Country> { 
+   rdf:type                    wfonto:Country,
+   wfonto:has-iso-alpha2-code xsd:string ,
+   wfonto:has-iso-alpha3-code xsd:string ,
+   rdfs:label                  xsd:string
+ } 
+ 
+ 
+ <Region> { 
+   rdf:type                    wfonto:Region,
+   rdfs:label                  xsd:string,
+   wfonto:has-country         @<Country>
+ } 
+ 
+ <Organization> { 
+   rdf:type                    wforg:Organization,
+   rdfs:label                  xsd:string
+ } 
+ 
+ <Ranking> { 
+   rdf:type             cex:Ranking,
+   rdfs:reason          xsd:string,
+   cex:slice            @<Slice>,        # Slice that has been ranked
+   cex:observation      @<Observation>,  # Observation that has been ranked
+   cex:dimension        wfonto:ref-area   # In WebIndex, rankings are made by area (Country)
+ } 
+ 
+ <Normalize> { 
+   rdf:type             cex:Normalize,
+   cex:mean             xsd:decimal,        # Mean of the values in the slice
+   cex:observation      @<Observation>,  # Observation that has been normalized
+   cex:stdDesv          xsd:decimal,        # Standard deviation of the values in the slice
+   cex:slice            @<Slice>           # Reference slice of the normalization
+ } 
+ 
+ <Score> { 
+   rdf:type             cex:Score,
+   cex:rangeMax         100,             # Maximum target
+   cex:rangeMin         0,               # Minimum target
+   cex:valueMax         xsd:decimal,     # Maximum of all the values in the slice to score
+   cex:valueMin         xsd:decimal,     # Minimum of all the values in the slice to score
+   cex:observation      @<Observation>, # Observation to score
+   cex:slice            @<Slice>       # Slice that is being scored
+ } 
+ 
+ <GroupClusters> { 
+   rdf:type             cex:GroupClusters,
+   cex:component        @<Component>,    # Component(s) that are being grouped
+   cex:dataSet          @<Dataset>,      # Dataset that is being grouped
+   cex:dimension        wfonto:ref-area,    # Dimension that is being grouped
+   cex:filterDimension  wfonto:ref-year,    # Dimension that is being applied to filter
+   cex:filterValue      xsd:integer         # Value that acts as the filter
+ } 
+ 
+ <GroupIndex> { 
+   rdf:type             cex:GroupSubIndex,
+   cex:component        @<Component>,    # Component(s) that are being grouped
+   cex:dataSet          @<Dataset>,      # Dataset that is being grouped
+   cex:dimension        wfonto:ref-area,    # Dimension that is being grouped
+   cex:filterDimension  wfonto:ref-year,    # Dimension that is being applied to filter
+   cex:filterValue      xsd:integer         # Value that acts as the filter
+ } 
+ 
+ 
+ <WeightSchema> { 
+   rdf:type                    cex:Weight,
+   cex:weight                  @<Weight>      # weight(s) that belong to the weight schema
+ } 
+ 
+ <Weight> { 
+   rdf:type             cex:Weight,
+   cex:element          @<Indicator>,      # Element to weight
+   cex:value            xsd:decimal          # value of the weight
+ } 
+ 
+ <DataSet> { 
+      cex:computation @<DatasetComputation> ,
+      rdf:type qb:DataSet ,
+      qb:structure wfonto:DSD ,
+      sdmxAttribute:unitMeasure dbpedia:Year ,
+      qb:slice @<Slice>*
+ }
+ 
+ <Slice> { 
+      rdf:type qb:Slice ,
+      cex:indicator @<Indicator> ,
+      wfonto:ref-year xsd:int ,
+      qb:observation @<Observation>*
+ } 

@@ -1,0 +1,15 @@
+wiweightSchema:w1 a cex:Weight ;
+      cex:element wiindicator:ind1 ;
+      cex:value 1.2 .
+
+wiindicator:ind1 a wfonto:PrimaryIndicator ;
+                 wfonto:country-coverage 23 ;
+                 wfonto:provider-link wforg:org1 ;
+                 wfonto:republish 0 ;
+                 cex:highLow cex:High ;
+                 rdfs:label "Ind 1" ;
+                 rdfs:comment "Comment " ;
+                 skos:notation "Skos..." ;
+                 time:intervalStarts 2009 ;
+                 time:intervalEnds 2012 .
+

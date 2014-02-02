@@ -1,0 +1,18 @@
+<Observation> { 
+      cex:md5-checksum xsd:string ,                    # MD5 from observationId#weso#Area#year     
+      cex:computation @<Computation> ,              # 
+      dcterms:issued xsd:int ,                         # timestamp 
+      dcterms:publisher wi-org:WebFoundation , 
+      qb:dataSet @<Dataset> ,                       # Represents the dataset to which an observation belongs
+      rdf:type ( qb:Observation wi-onto:Observation ),
+      rdfs:label xsd:string@en ,
+      sdmx-concept:obsStatus @<ObsStatus> ,          
+      wi-onto:ref-area @<Area>,                     # In WebIndex, the ref-area are usually countries 
+      wi-onto:ref-indicator 
+         ( @<Indicator>
+         | @<Component> 
+         | @<Subindex> 
+         | @<Index>) ,          # Indicators can be single indicators, components, subindexes or indexes
+      wi-onto:ref-year xsd:int ,                       # Year of the observation
+      cex:value xsd:double                             # Value of the observation
+ } 

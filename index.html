@@ -101,6 +101,9 @@ Along this document <code>{base}</code> refers to the previous URI.
  the <a href="http://www.w3.org/2013/ShEx/Primer.html">ShEx RDF schema language</a></p>
 
 <section>
+<h2>Structural elements</h2>
+
+<section>
 <h2>Observations</h2>
 <p>A single observation. It is usually a cell value from an excel sheet.
 <p>There are three main dimensions for each observation:
@@ -152,7 +155,7 @@ where
       cex:value xsd:double                             # Value of the observation
  } </pre>
 </section>
-</section>
+</section> <!-- Observation -->
 
 <section>
 <h2 id="indicator">Indicators</h2>
@@ -195,7 +198,8 @@ where
 	  time:intervalEnds xsd:integer
  } </pre>
 </section>
-</section>
+</section> <!-- Indicator -->
+
 
 <section>
 <h2 id="component">Components</h2>
@@ -231,7 +235,7 @@ where
 	  skos:notation xsd:string,
  } </pre>
 </section>
-</section>
+</section> <!-- Component -->
 
 <section>
 <h2 id="subindex">Subindexes</h2>
@@ -266,7 +270,7 @@ where
 	  skos:notation xsd:string,
  } </pre>
 </section>
-</section>
+</section>  <!-- Subindex -->
 
 <section>
 <h2 id="index">Index</h2>
@@ -301,7 +305,94 @@ where
 	  skos:notation xsd:string,
  } </pre>
 </section>
+</section>  <!-- Index -->
+
+
+<section>
+<h2 id="dataset">Slice</h2>
+<p>A Slice is a grouping of observations. In the case of the WebIndex slices are usually groupings
+ of observations with the same indicator, year and dataset but different countries.</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/slice/{sliceId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{sliceId} = Id of this slice
+</pre>
 </section>
+
+<section>
+<h2>Example</h2>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/slice/computed_2013_1386752461095_89400">http://data.webfoundation.org/webindex/v2013/slice/computed_2013_1386752461095_89400</a>
+</code>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;Slice> { 
+	  rdf:type qb:Slice ,
+	  cex:indicator @&lt;Indicator> ,
+	  wf-onto:ref-year xsd:int ,
+	  qb:observation (@&lt;Observation>*)
+ } 
+</pre>
+</section>
+</section>  <!-- Dataset -->
+
+<section>
+<h2 id="dataset">Dataset</h2>
+<p>A Dataset is a grouping of slices. In the case of the WebIndex there are two main types of datasets: 
+ datasets that are imported from excel sheets and computed datasets that correspond with the different 
+ computation phases. 
+ This concept is the same as the <a href="http://www.w3.org/TR/vocab-data-cube/#ref_qb_DataSet">qb:DataSet</a> concept 
+ from RDF Data Cube</p>
+
+<section>
+<h2>URI Template</h2>
+<pre data-lang="text/turtle">{base}/dataset/{datasetId}</pre>
+where
+<pre data-lang="text/turtle">
+{base} = Base URI for WebIndex
+{datasetId} = Id of this dataset
+</pre>
+</section>
+
+<section>
+<h2>Examples</h2>
+<ul>
+<li>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/dataset/IEA_A-Imputed">http://data.webfoundation.org/webindex/v2013/dataset/IEA_A-Imputed</a>
+</code>
+<li>
+<code>
+<a href="http://data.webfoundation.org/webindex/v2013/dataset/ClusterIndicators_2013">http://data.webfoundation.org/webindex/v2013/dataset/ClusterIndicators_2013</a>
+</code>
+</ul>
+</section>
+
+<section>
+<h2>Schema</h2>
+<pre data-lang="text/turtle">
+&lt;DataSet> { 
+      cex:computation @&lt;DatasetComputation> ,
+	  rdf:type qb:DataSet ,
+	  qb:structure wf-onto:DSD ,
+	  sdmxAttribute:unitMeasure dbpedia:Year ,
+	  qb:slice (@&lt;Slice>*)
+ } 
+</pre>
+</section>
+</section>  <!-- Dataset -->
+
+</section> <!-- Structural elements -->
+
+<section>
+<h2>Countries and regions</h2>
 
 <section>
 <h2 id="country">Country</h2>
@@ -334,9 +425,7 @@ where
    rdfs:label				   xsd:string,
  } </pre>
 </section>
-
-
-</section>
+</section> <!-- Country -->
 
 <section>
 <h2 id="region">Region</h2>
@@ -368,7 +457,10 @@ where
    wf-onto:has-country		   @&lt;Country>
  } </pre>
 </section>
-</section>
+</section> <!-- Region -->
+
+</section> <!-- Countries and Regions -->
+
 
 <section>
 <h2 id="organization">Organization</h2>
@@ -401,9 +493,11 @@ where
 
 </section>	   
 
+<section>
+<h2>Computations</h2>
 
 <section>
-<h2 id="computation">Computation</h2>
+<h2 id="computation">Computations between observations</h2>
 <p>Describes the Computation that has been done to obtain a value</p>
 
 <section>
@@ -422,9 +516,19 @@ where
 <a href="http://data.webfoundation.org/webindex/v2013/computation/computed_2009_1386752461095_123323">http://data.webfoundation.org/webindex/v2013/computation/computed_2009_1386752461095_123323</a>
 </code>
 </section>
+
 <section>
 <h2>Schema</h2>
 The schema depends on the type of computation.
+
+<section>
+<h2>Raw value</h2>
+<pre data-lang="text/turtle">
+&lt;Raw> { 
+   rdf:type	            cex:Raw
+ } </pre>
+</section>
+
 
 <section>
 <h2>Ranking of values</h2>
@@ -493,7 +597,7 @@ The schema depends on the type of computation.
 <section> 
 <h2>Group index</h2>
 <pre data-lang="text/turtle">
-&lt;GroupSubIndex> { 
+&lt;GroupIndex> { 
    rdf:type	            cex:GroupIndex,
    cex:component		@&lt;Component>  	# Component(s) that are being grouped
    cex:dataSet			@&lt;Dataset>		# Dataset that is being grouped
@@ -503,7 +607,11 @@ The schema depends on the type of computation.
  } </pre>
 </section>
 
-</section>
+</section> <!-- schema -->
+</section>  <!-- Computations between observations -->
+
+<section>
+<h2>Weights and Weight schemas</h2>
 
 <section>
 <h2 id="weightSchema">Weight schema</h2>
@@ -525,6 +633,7 @@ where
 <a href="http://data.webfoundation.org/odb/v2013/weightSchema/indicatorWeights">http://data.webfoundation.org/odb/v2013/weightSchema/indicatorWeights</a>
 </code>
 </section>
+
 <section>
 <h2>Schema</h2>
 <pre data-lang="text/turtle">
@@ -552,8 +661,14 @@ where
 </section>
 
 </section>	<!-- Weight  -->   
+</section> <!-- Weights and weight schemas -->
 
-</section>	<!-- Computation -->   
+<section>
+<h2>Computations between datasets</h2>
+
+</section> <!-- Computations between datasets -->
+
+</section> <!-- Computations -->
 
 </section> <!-- Entities -->
 

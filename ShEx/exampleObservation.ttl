@@ -1,0 +1,63 @@
+@prefix cex: <http://purl.org/weso/ontology/computex#> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix odb: <http://data.webfoundation.org/odb/v2013/> .
+@prefix odb-component: <http://data.webfoundation.org/odb/v2013/component/> .
+@prefix odb-computation: <http://data.webfoundation.org/odb/v2013/computation/> .
+@prefix odb-country: <http://data.webfoundation.org/odb/v2013/country/> .
+@prefix odb-dataset: <http://data.webfoundation.org/odb/v2013/dataset/> .
+@prefix odb-index: <http://data.webfoundation.org/odb/v2013/index/> .
+@prefix odb-indicator: <http://data.webfoundation.org/odb/v2013/indicator/> .
+@prefix odb-obs: <http://data.webfoundation.org/odb/v2013/observation/> .
+@prefix odb-ranking: <http://data.webfoundation.org/odb/v2013/ranking/> .
+@prefix odb-region: <http://data.webfoundation.org/odb/v2013/region/> .
+@prefix odb-slice: <http://data.webfoundation.org/odb/v2013/slice/> .
+@prefix odb-weightSchema: <http://data.webfoundation.org/odb/v2013/weightSchema/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmxConcept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix test: <http://data.webfoundation.org/test/v2013/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix webindex: <http://data.webfoundation.org/webindex/v2013/> .
+@prefix wf-onto: <http://data.webfoundation.org/ontology/> .
+@prefix wf-org: <http://data.webfoundation.org/organization/> .
+@prefix wf-people: <http://data.webfoundation.org/people/> .
+@prefix wi-component: <http://data.webfoundation.org/webindex/v2013/component/> .
+@prefix wi-computation: <http://data.webfoundation.org/webindex/v2013/computation/> .
+@prefix wi-country: <http://data.webfoundation.org/webindex/v2013/country/> .
+@prefix wi-dataset: <http://data.webfoundation.org/webindex/v2013/dataset/> .
+@prefix wi-index: <http://data.webfoundation.org/webindex/v2013/index/> .
+@prefix wi-indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> .
+@prefix wi-obs: <http://data.webfoundation.org/webindex/v2013/observation/> .
+@prefix wi-ranking: <http://data.webfoundation.org/webindex/v2013/ranking/> .
+@prefix wi-region: <http://data.webfoundation.org/webindex/v2013/region/> .
+@prefix wi-slice: <http://data.webfoundation.org/webindex/v2013/slice/> .
+@prefix wi-weightSchema: <http://data.webfoundation.org/webindex/v2013/weightSchema/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<Observation> { 
+      cex:md5-checksum xsd:string ,                    # MD5 from observationId#weso#Area#year     
+      cex:computation @<Computation> ,                 # 
+      dcterms:issued xsd:int ,                         # timestamp 
+      dcterms:publisher wi-org:WebFoundation , 
+      qb:dataSet @<Dataset> ,                          # Represents the dataset to which an observation belongs
+      rdf:type ( qb:Observation wi-onto:Observation ),
+      rdfs:label xsd:string@en ,
+      sdmx-concept:obsStatus @<ObsStatus> ,          
+      wi-onto:ref-area @<Area>,                        # In WebIndex, the ref-area are usually countries 
+      wi-onto:ref-indicator 
+         ( @<Indicator>
+         | @<Component> 
+         | @<Subindex> 
+         | @<Index>) ,                                 # Indicators can be single indicators, components, subindexes or indexes
+      wi-onto:ref-year xsd:int ,                       # Year of the observation
+      cex:value xsd:double                             # Value of the observation
+ } 
+ 
