@@ -1,0 +1,183 @@
+@prefix odb-dataset: <http://data.webfoundation.org/odb/v2013/dataset/> .
+@prefix wi-obs: <http://data.webfoundation.org/webindex/v2013/observation/> .
+@prefix wf-onto: <http://data.webfoundation.org/ontology/> .
+@prefix test:  <http://data.webfoundation.org/test/v2013/> .
+@prefix wi-ranking: <http://data.webfoundation.org/webindex/v2013/ranking/> .
+@prefix sdmxConcept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix cex:   <http://purl.org/weso/ontology/computex#> .
+@prefix org:   <http://www.w3.org/ns/org#> .
+@prefix wi-slice: <http://data.webfoundation.org/webindex/v2013/slice/> .
+@prefix odb-obs: <http://data.webfoundation.org/odb/v2013/observation/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix wi-computation: <http://data.webfoundation.org/webindex/v2013/computation/> .
+@prefix sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix wi-component: <http://data.webfoundation.org/webindex/v2013/component/> .
+@prefix wi-region: <http://data.webfoundation.org/webindex/v2013/region/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> .
+@prefix wi-country: <http://data.webfoundation.org/webindex/v2013/country/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wi-indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> .
+@prefix sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix odb-country: <http://data.webfoundation.org/odb/v2013/country/> .
+@prefix odb-component: <http://data.webfoundation.org/odb/v2013/component/> .
+@prefix webindex: <http://data.webfoundation.org/webindex/v2013/> .
+@prefix wi-index: <http://data.webfoundation.org/webindex/v2013/index/> .
+@prefix wi-weightSchema: <http://data.webfoundation.org/webindex/v2013/weightSchema/> .
+@prefix geo:   <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix odb-region: <http://data.webfoundation.org/odb/v2013/region/> .
+@prefix wf-people: <http://data.webfoundation.org/people/> .
+@prefix qb:    <http://purl.org/linked-data/cube#> .
+@prefix odb-ranking: <http://data.webfoundation.org/odb/v2013/ranking/> .
+@prefix odb-index: <http://data.webfoundation.org/odb/v2013/index/> .
+@prefix odb-computation: <http://data.webfoundation.org/odb/v2013/computation/> .
+@prefix odb-slice: <http://data.webfoundation.org/odb/v2013/slice/> .
+@prefix wf-org: <http://data.webfoundation.org/organization/> .
+@prefix odb-indicator: <http://data.webfoundation.org/odb/v2013/indicator/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix wi-dataset: <http://data.webfoundation.org/webindex/v2013/dataset/> .
+@prefix odb-weightSchema: <http://data.webfoundation.org/odb/v2013/weightSchema/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix odb:   <http://data.webfoundation.org/odb/v2013/> .
+
+wi-dataset:I0-Imputed
+        a                qb:DataSet ;
+        rdfs:label       "Dataset I0-Imputed"@en ;
+        qb:slice         wi-slice:I0Year0-Imputed ;
+        qb:structure     wf-onto:DSD ;
+        cex:computation  [ a            cex:ImputeDataSet ;
+                           cex:dataSet  wi-dataset:I0-Raw ;
+                           cex:method   cex:MeanBetweenMissing , cex:AvgGrowth2Missing , cex:CopyRaw
+                         ] .
+
+wf-onto:sliceByArea  a        qb:SliceKey ;
+        qb:componentProperty  wf-onto:ref-year , cex:indicator .
+
+wi-obs:I0Year0C0  a       qb:Observation ;
+        wf-onto:ref-area  wi-country:C0 ;
+        wf-onto:ref-year  "Year0" ;
+        qb:dataSet        wi-dataset:I0-Raw ;
+        cex:indicator     wi-indicator:I0 ;
+        cex:value         "0.7959265"^^xsd:float .
+
+wi-slice:ranking  a        qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-index:index .
+
+wi-index:index  a    cex:index ;
+        cex:element  wi-indicator:I0 .
+
+wi-dataset:Composite  a  qb:DataSet ;
+        rdfs:label       "Dataset Composite"@en ;
+        qb:slice         wi-slice:composite ;
+        qb:structure     wf-onto:DSD ;
+        cex:computation  [ a                 cex:WeightedMean ;
+                           cex:component     wi-index:index ;
+                           cex:dataSet       wi-dataset:Adjusted ;
+                           cex:dimension     wf-onto:ref-area ;
+                           cex:weightSchema  wi-weightSchema:indicatorWeights
+                         ] .
+						 
+
+wf-onto:DSD  a        qb:DataStructureDefinition ;
+        qb:component  [ qb:measure  cex:value ] ;
+        qb:component  [ qb:dimension  cex:indicator ;
+                        qb:order      "3"^^xsd:int
+                      ] ;
+        qb:component  [ qb:dimension  wf-onto:ref-year ;
+                        qb:order      "2"^^xsd:int
+                      ] ;
+        qb:component  [ qb:dimension  wf-onto:ref-area ;
+                        qb:order      "1"^^xsd:int
+                      ] ;
+        qb:sliceKey   wf-onto:sliceByArea .
+
+wf-onto:ref-area  rdfs:range  wf-onto:Area .
+
+wi-slice:I0Year0-Imputed
+        a                  qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-indicator:I0 .
+
+wi-slice:I0Year0-Normalized
+        a                  qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-indicator:I0 .
+
+wi-slice:I0Year0-Adjusted
+        a                  qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-indicator:I0 .
+
+wi-indicator:I0  a   wf-onto:SecondaryIndicator ;
+        rdfs:label   "Indicator I0"@en ;
+        cex:highLow  cex:High .
+
+wi-dataset:I0-Normalized
+        a                qb:DataSet ;
+        rdfs:label       "Dataset I0-Normalized"@en ;
+        qb:slice         wi-slice:I0Year0-Normalized ;
+        qb:structure     wf-onto:DSD ;
+        cex:computation  [ a            cex:NormalizeDataSet ;
+                           cex:dataSet  wi-dataset:I0-Imputed
+                         ] .
+
+wi-dataset:Adjusted  a   qb:DataSet ;
+        rdfs:label       "DataSet Adjusted"@en ;
+        qb:slice         wi-slice:I0Year0-Adjusted ;
+        qb:structure     wf-onto:DSD ;
+        cex:computation  [ a              cex:AdjustDataSet ;
+                           cex:dataSet    wi-dataset:I0-Normalized ;
+                           cex:dimension  wf-onto:ref-year ;
+                           cex:increment  "8"^^xsd:int ;
+                           cex:value      "Year0"
+                         ] .
+
+wi-dataset:Ranking  a    qb:DataSet ;
+        rdfs:label       "Dataset Ranking"@en ;
+        qb:slice         wi-slice:ranking ;
+        qb:structure     wf-onto:DSD ;
+        cex:computation  [ a              cex:Ranking ;
+                           cex:dimension  wf-onto:ref-area ;
+                           cex:slice      wi-slice:composite
+                         ] .
+
+wi-slice:composite  a      qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-index:index .
+
+wf-onto:ref-year  rdfs:range  wf-onto:Year .
+
+wi-weightSchema:indicatorWeights
+        a           cex:WeightSchema ;
+        cex:weight  [ a              cex:Weight ;
+                      cex:dimension  cex:indicator ;
+                      cex:element    wi-indicator:I0 ;
+                      cex:value      "1.0"^^xsd:float
+                    ] .
+
+wi-slice:I0Year0-Raw  a    qb:Slice ;
+        wf-onto:ref-year   "Year0" ;
+        qb:observation     wi-obs:I0Year0C0 ;
+        qb:sliceStructure  wf-onto:sliceByArea ;
+        cex:indicator      wi-indicator:I0 .
+
+cex:indicator  rdfs:range  wf-onto:Indicator .
+
+wi-country:C0  a    wf-onto:Country ;
+        rdfs:label  "Country C0"@en .
+
+wi-dataset:I0-Raw  a  qb:DataSet ;
+        rdfs:label    "Dataset I0-Raw"@en ;
+        qb:slice      wi-slice:I0Year0-Raw ;
+        qb:structure  wf-onto:DSD .
+
+		
