@@ -53,7 +53,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 , dcterms:issued xsd:integer ?
 , dcterms:publisher (wforg:WebFoundation ) ?
 , qb:dataSet @<DataSet>
-, wfonto:ref-area .
+, wfonto:ref-area @<Country>
 , cex:indicator @<Indicator> 
 , wfonto:ref-year .
 , cex:value xsd:float              
@@ -188,7 +188,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 , cex:computation . ? 
 , qb:structure ( wfonto:DSD ) ?
 , sdmxAttribute:unitMeasure . ?
-, qb:slice @<Slice>* 
+, qb:slice @<Slice>+ 
 }
  
 <Slice> { 
@@ -196,7 +196,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 , cex:indicator @<Indicator> 
 , qb:sliceStructure . 
 , wfonto:ref-year .
-, qb:observation @<Observation>*
+, qb:observation @<Observation>+
 }
 
 # <nothing> { }

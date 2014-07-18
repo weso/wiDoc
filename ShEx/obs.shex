@@ -1,0 +1,53 @@
+PREFIX cex: <http://purl.org/weso/ontology/computex#> 
+PREFIX dbpedia: <http://dbpedia.org/resource/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX odb: <http://data.webfoundation.org/odb/v2013/> 
+PREFIX odbcomponent: <http://data.webfoundation.org/odb/v2013/component/> 
+PREFIX odbcomputation: <http://data.webfoundation.org/odb/v2013/computation/> 
+PREFIX odbcountry: <http://data.webfoundation.org/odb/v2013/country/> 
+PREFIX odbdataset: <http://data.webfoundation.org/odb/v2013/dataset/> 
+PREFIX odbindex: <http://data.webfoundation.org/odb/v2013/index/> 
+PREFIX odbindicator: <http://data.webfoundation.org/odb/v2013/indicator/> 
+PREFIX odbobs: <http://data.webfoundation.org/odb/v2013/observation/> 
+PREFIX odbranking: <http://data.webfoundation.org/odb/v2013/ranking/> 
+PREFIX odbregion: <http://data.webfoundation.org/odb/v2013/region/> 
+PREFIX odbslice: <http://data.webfoundation.org/odb/v2013/slice/> 
+PREFIX odbweightSchema: <http://data.webfoundation.org/odb/v2013/weightSchema/> 
+PREFIX org: <http://www.w3.org/ns/org> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> 
+PREFIX sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> 
+PREFIX sdmxconcept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+PREFIX sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX test: <http://data.webfoundation.org/test/v2013/> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX webindex: <http://data.webfoundation.org/webindex/v2013/> 
+PREFIX wfonto: <http://data.webfoundation.org/ontology/> 
+PREFIX wforg: <http://data.webfoundation.org/organization/> 
+PREFIX wfpeople: <http://data.webfoundation.org/people/> 
+PREFIX wicomponent: <http://data.webfoundation.org/webindex/v2013/component/> 
+PREFIX wicomputation: <http://data.webfoundation.org/webindex/v2013/computation/> 
+PREFIX wicountry: <http://data.webfoundation.org/webindex/v2013/country/> 
+PREFIX widataset: <http://data.webfoundation.org/webindex/v2013/dataset/> 
+PREFIX wiindex: <http://data.webfoundation.org/webindex/v2013/index/> 
+PREFIX wiindicator: <http://data.webfoundation.org/webindex/v2013/indicator/> 
+PREFIX wiobs: <http://data.webfoundation.org/webindex/v2013/observation/> 
+PREFIX wiranking: <http://data.webfoundation.org/webindex/v2013/ranking/> 
+PREFIX wiregion: <http://data.webfoundation.org/webindex/v2013/region/> 
+PREFIX wislice: <http://data.webfoundation.org/webindex/v2013/slice/> 
+PREFIX wiweightSchema: <http://data.webfoundation.org/webindex/v2013/weightSchema/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+
+<Observation> { 
+  rdf:type ( qb:Observation wfonto:Observation )  
+, rdfs:label . ?
+, cex:md5-checksum xsd:string ?
+, . . *
+} 
+ 
+ 

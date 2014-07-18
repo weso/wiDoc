@@ -1,0 +1,183 @@
+\documentclass{llncs}
+\usepackage[utf8]{inputenc}
+\usepackage{epstopdf}
+\usepackage{times}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{dcolumn}
+\usepackage{graphicx}
+\usepackage{xspace}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{float}
+%\usepackage{amsmath, amsthm, amssymb, amsfonts}
+%\usepackage{tabularx}
+\usepackage{array}
+%\usepackage{tabulary}%can use align in tables with line breaks
+\usepackage{multirow}
+\usepackage{rotating,makecell}
+\usepackage{booktabs} %adds new commands toprule midrule and bottomrule for professionally looking tables
+
+\usepackage[breaklinks=true, bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+\urlstyle{same}
+% \usepackage{titling} % To modify the title
+%\usepackage[hmargin=1.3in]{geometry}
+% \setlength{\droptitle}{-5em}   % This is your set screw
+
+
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.9}
+
+% listing styles
+\lstset{
+    numberbychapter=false,
+    basicstyle=\ttfamily\footnotesize,
+    numbers=none,
+    captionpos=b,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace,
+    columns=fullflexible,
+    commentstyle=\itshape\color{OliveGreen},
+    keywordstyle=\bfseries\color{CadetBlue}
+}
+
+
+\lstdefinestyle{SPARQL}{
+  backgroundcolor=\color{lightlightgray}, % Choose background color
+  morecomment=[l]{\#},
+  morekeywords={SELECT, CONSTRUCT, FROM, WHERE, FILTER, GROUP BY, IN, AS,
+    LIMIT,OFFSET,PREFIX,OPTIONAL,UNION,NOT,EXISTS,AVG,BIND,
+    obs,foaf,rdf,skos,rdfs,ex,xsd,owl,skosxl,doap,void,dbo,earl,cex,qb}
+ }
+
+\lstdefinestyle{Turtle}{
+  backgroundcolor=\color{lightlightgray}, % Choose background color
+  morecomment=[l]{\#},
+  morekeywords={@PREFIX,BASE,a,foaf, @prefix, rdf,
+    obs,qb,cex,skos, skosxl, rdf, rdfs, ex, xsd, wr,
+    wt,dc,lemon,doap,void,dbo,owl}
+ }
+    
+\lstdefinestyle{Turtle}{numberblanklines=true, morekeywords={foaf, prefix, rdf,
+    skos, skosxl, rdfs, ex, xsd, wr, wt, dc, lemon, doap, doap,void, dbo, owl,
+    @prefix}}
+
+
+%\usepackage{textcomp}
+\lstdefinestyle{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+\sloppy
+
+%%%%%%%%%%% Put your definitions here
+
+
+%%%%%%%%%%% End of definitions
+
+\newcommand{\TODO}[1]{{\color{red}{\textbf{TODO: {#1}}\xspace}}}
+\newcommand{\todo}[1]{{\TODO{{#1}}}}
+
+\newcommand{\CONSIDER}[1]{{\color{blue}{\textbf{CONSIDER: {#1}}\xspace}}}
+   
+\newcommand{\desc}{\noindent\emph{Description:}}
+
+\newcommand{\footnoteUrl}[1]{\footnote{\url{#1}}}
+
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+\floatplacement{figure}{H}
+
+\begin{document}
+
+\title{The WebIndex Data Portal}
+
+\author{Jose Emilio Labra Gayo\inst{1} 
+ \and Hania Farham\inst{2}
+ \and Juan Castro Fernández\inst{1}
+ \and Jose María Álvarez Rodríguez\inst{3}}
+ 
+\institute{WESO Research Group \\
+           \email{\{jelabra,juan.castro\}@weso.es}
+        \and The Web Foundation \\
+       \email{hania@webfoundation.org}
+       \and Dept. Computer Science \\
+            Carlos III University \\
+            \email{josemaria.alvarez@uc3m.es}
+}
+
+\maketitle
+
+\begin{abstract}
+
+We describe the development of the Web Index linked data portal that represents statistical index data and computations. 
+
+In order to empower the Web Index transparency, one requirement was that it should be possible to verify every published data.
+The resulting portal contains data that can be tracked to its sources so an external agent can validate the whole index computation process. We consider this approach a step towards more quality in linked data publication.
+
+\end{abstract}
+
+\section{Introduction}
+
+The WebIndex is a multi-dimensional measure of the World Wide Web’s contribution to development and human rights globally. It covers 81 countries and incorporates indicators that assess several areas like universal access; freedom and openness; relevant content; and empowerment \footnote{\url{http://thewebindex.org}}. 
+
+First released in 2012, the 2013 Index has been expanded and refined to include 20 new countries and features an enhanced data set in the areas of gender, Open Data, privacy rights and security.
+
+The 2012 version offered a data
+portal where the data was obtained 
+by transforming raw observations and precomputed values 
+from Excel sheets to RDF. 
+In this paper, we describe the development of the 2013 version of the WebIndex data portal\footnoteUrl{http://data.webfoundation.org}, where we employ 
+a new validation and computation approach that enables the publication of a verifiable linked data version of the Web Index data.
+
+Given that the most important part of a data portal about statistical indexes are the 
+numeric values of each observation we established the requirement that any value published had to be justified either declaring from where it had been obtained or
+linking it to the values of other observations
+from which it had been computed.
+
+The resulting data portal \footnote{\url{http://data.webfoundation.org/webindex/2013}} contains not only a linked data view about
+the statistical data but also a machine verifiable justification of the index ranks and computations.
+
+\section{WebIndex workflow and validation}
+
+Two types of data were used in the construction of the Index: existing data from other data providers (\emph{secondary data}), and new data gathered via a multi-country questionnaire (\emph{primary data}) 
+that was specifically designed by the Web Foundation and its advisers. The computation procedure employs common statistical formulae~\footnote{The computation steps are described in~\url{http://thewebindex.org/about/the-web-index/}}. The raw data was obtained by a team of statisticians in a big Excel file comprised of 184 Excel sheets which contained a combination
+ of raw, imputed and normalized data. 
+That external data was then filtered and converted to RDF by means of an specialized web service called \emph{wiFetcher}~\footnote{\url{https://github.com/weso/wiFetcher}}. 
+Although some of the imported values had been
+ pre-computed in Excel by human experts, we collected only the raw values, so we could validate the whole computation process. 
+
+We implemented an online validation tool called \emph{Computex}\footnote{\url{http://computex.herokuapp.com/}} which takes as
+ input an RDF graph and checks if it follows the integrity constraints defined by Computex.
+ The validation tool can also check if the RDF graph follows the RDF Data Cube integrity constraints
+ and it can also do the index computation for small RDF Graphs using SPARQL CONSTRUCT queries. 
+
+Although this declarative approach was very elegant, computing the webindex using only SPARQL queries was not practical (it took around 15 minutes for a small subset), so the computation process was finally done
+  by the specialized Scala program \emph{wiCompute}~\footnote{\url{https://github.com/weso/wiCompute}} which took the raw values and computed the index following the
+computation steps generating RDF datasets for the intermediary results and linking the generated values to the values from which they had been computed. The new tool took a few seconds to do all the process. 
+The data portal documentation employs a combination of examples and templates using Shape Expressions~\footnote{\url{http://weso.github.io/wiDoc/}}. 
+
+Following the linked data principles, we considered that it was necessary to offer not only RDF views but also HTML representations of the different data.
+We developed a visualization tool called Wesby~\footnote{\url{http://wesby.weso.es}} which takes as input an SPARQL endpoint and offers a linked data browsing experience. Wesby was inspired by Pubby~\cite{Pubby} and was developed in Scala using the Play! Framework. 
+Wesby combines the visualization with a set of templates to offer specialized views for different
+ types of resources. \footnote{\url{http://data.webfoundation.org/webindex/v2013/country/ESP} contains the WebIndex visualization of 
+ the country Spain}. Wesby also handles content negotiation automatically to offer views in HTML, RDF/XML, Turtle, etc.
+
+\section{Acknowledgements}
+
+We would like to thank Jules Clements, Karin Alexander, César Luis Alvargonzález, Ignacio Fuertes Bernardo and Alejandro Montes for their collaboration in the development of the WebIndex project.
+
+%\bibliographystyle{abbrv}
+%\bibliography{computex}
+
+\end{document}
