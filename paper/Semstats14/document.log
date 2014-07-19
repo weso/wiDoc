@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.12.18)  18 JUL 2014 22:40
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.12.18)  19 JUL 2014 08:21
 entering extended mode
 **document.tex
-(C:\src\widoc\paper\document.tex
+(C:\src\widoc\paper\Semstats14\document.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -13,7 +13,7 @@ an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese,
 romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
 sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
 senglishmax, welsh, loaded.
-(C:\src\widoc\paper\llncs.cls
+(C:\src\widoc\paper\Semstats14\llncs.cls
 Document Class: llncs 2013/09/27 v2.18 
  LaTeX document class for Lecture Notes in Computer Science
 (C:\Utils\miktex\tex\latex\base\article.cls
@@ -80,9 +80,11 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \mult@nat@firstbox=\box50
 \colbreak@box=\box51
 \multicol@sort@counter=\count95
-) (C:\src\widoc\paper\aliascnt.sty
-Package: aliascnt 2009/09/08 v1.3 Alias counter (HO)
-(C:\src\widoc\paper\remreset.sty))
+)
+(C:\Utils\miktex\tex\latex\oberdiek\aliascnt.sty
+Package: aliascnt 2009/09/08 v1.3 Alias counters (HO)
+
+(C:\Utils\miktex\tex\latex\carlisle\remreset.sty))
 \c@chapter=\count96
 LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
 LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
@@ -698,7 +700,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip54
 )
-(C:\src\widoc\paper\document.aux)
+(C:\src\widoc\paper\Semstats14\document.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
 LaTeX Font Info:    ... okay on input line 101.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
@@ -715,7 +717,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
 LaTeX Font Info:    ... okay on input line 101.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 101.
 
- (C:\Utils\miktex\tex\latex\psnfss\ot1ptm.fd
+
+(C:\Utils\miktex\tex\latex\psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (C:\Users\Labra\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
@@ -747,7 +750,8 @@ LaTeX Info: Redefining \ref on input line 101.
 LaTeX Info: Redefining \pageref on input line 101.
 LaTeX Info: Redefining \nameref on input line 101.
 
-(C:\src\widoc\paper\document.out) (C:\src\widoc\paper\document.out)
+(C:\src\widoc\paper\Semstats14\document.out)
+(C:\src\widoc\paper\Semstats14\document.out)
 \@outlinefile=\write3
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
@@ -766,53 +770,129 @@ File: omspcr.fd
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 121.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 120.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 130.
- [1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
 
-{C:/Users/Labra/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 2020) in paragraph at lines 150--154
+[]\OT1/ptm/m/n/10 As a mo-ti-vat-ing ex-am-ple, we will em-ploy the Web In-dex 
+project ([]$http : / /$
+ []
+
+[1
+
+{C:/Users/Labra/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+[3] <WebIndexWorkFlow.pdf, id=73, 963.6pt x 542.025pt>
+File: WebIndexWorkFlow.pdf Graphic file (type pdf)
+
+<use WebIndexWorkFlow.pdf>
+Package pdftex.def Info: WebIndexWorkFlow.pdf used on input line 257.
+(pdftex.def)             Requested size: 347.12354pt x 195.2529pt.
+ <Model.png, id=75, 483.60675pt x 304.7385pt>
+File: Model.png Graphic file (type png)
+
+<use Model.png>
+Package pdftex.def Info: Model.png used on input line 270.
+(pdftex.def)             Requested size: 347.12354pt x 218.7373pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[4 <C:/src/widoc/paper/Semstats14/WebIndexWorkFlow.pdf>]
+Underfull \hbox (badness 7814) in paragraph at lines 288--288
+ [][][]\OT1/ptm/m/n/9 The URI of the real ob-ser-va-tion is []$http : / / data 
+. webfoundation . org / webindex / v2013 /$
+ []
+
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <9> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 291.
+[5 <C:/src/widoc/paper/Semstats14/Model.png>]
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <9> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 343.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 171.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 359.
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 359.
+ [6]
+Overfull \hbox (8.39995pt too wide) in paragraph at lines 391--419
+ [] 
+ []
+
+[7] [8] [9] [10] <WebIndexSpain.png, id=295, 726.91576pt x 387.24675pt>
+File: WebIndexSpain.png Graphic file (type png)
+
+<use WebIndexSpain.png>
+Package pdftex.def Info: WebIndexSpain.png used on input line 604.
+(pdftex.def)             Requested size: 312.40906pt x 166.42421pt.
+
+<WebIndexWeightMap.png, id=297, 726.91576pt x 381.22424pt>
+File: WebIndexWeightMap.png Graphic file (type png)
+
+<use WebIndexWeightMap.png>
+Package pdftex.def Info: WebIndexWeightMap.png used on input line 616.
+(pdftex.def)             Requested size: 312.40906pt x 163.83597pt.
 
 
-Package natbib Warning: Citation `Pubby' on page 2 undefined on input line 171.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <C:/src/widoc/paper/Semstats14/WebIndexSpain.png>] [12 <C:/src/widoc/paper/
+Semstats14/WebIndexWeightMap.png>] (C:\src\widoc\paper\Semstats14\document.bbl
+[13]
+Underfull \hbox (badness 3417) in paragraph at lines 4--8
+[]\OT1/ptm/m/n/10 S. Abou-Zahra.  Eval-u-a-tion and Re-port Lan-guage EARL 1.0 
+schema.
+ []
 
 
+Underfull \hbox (badness 6658) in paragraph at lines 59--63
+[]\OT1/ptm/m/n/10 R. Cy-ga-niak and D. Reynolds.  The RDF Data Cube Vo-cab-u-la
+ry.
+ []
 
-Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 183.
+Underfull \hbox (badness 10000) in paragraph at lines 65--68
+[]\OT1/ptm/m/n/10 S. Har-ris and A. Seaborne.  SPARQL 1.1 Query Lan-guage.
+ []
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[14
 
- [2]
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 183.
- (C:\src\widoc\paper\document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 183.
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 696.
+ [15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 696.
+ (C:\src\widoc\paper\Semstats14\document.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 696.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 696.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 2C4466CF632C348CA8C8E5744114D5CB;59.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 183.
+(rerunfilecheck)             Checksum: D799265CA89401A08EAB56F00A56E8B4;104.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 696.
  ) 
 Here is how much of TeX's memory you used:
- 8339 strings out of 494045
- 115719 string characters out of 3153222
- 219186 words of memory out of 3000000
- 11468 multiletter control sequences out of 15000+200000
- 22426 words of font info for 46 fonts, out of 3000000 for 9000
+ 9041 strings out of 494045
+ 123730 string characters out of 3153222
+ 291808 words of memory out of 3000000
+ 11996 multiletter control sequences out of 15000+200000
+ 23990 words of font info for 52 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 42i,9n,32p,400b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,14n,40p,510b,1842s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Utils/miktex/fonts/enc/dvips/fontname/8r.enc}<C:/Utils/miktex/fonts/type1
-/public/amsfonts/cm/cmr6.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cm
-r7.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Utils/mikt
-ex/fonts/type1/urw/courier/ucrr8a.pfb><C:/Utils/miktex/fonts/type1/urw/times/ut
-mb8a.pfb><C:/Utils/miktex/fonts/type1/urw/times/utmr8a.pfb><C:/Utils/miktex/fon
-ts/type1/urw/times/utmri8a.pfb>
-Output written on document.pdf (3 pages, 90472 bytes).
+/public/amsfonts/cm/cmex10.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cme
+xtra/cmex7.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
+tils/miktex/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Utils/miktex/fonts/typ
+e1/public/amsfonts/cm/cmmi7.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm
+/cmr10.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Utils/m
+iktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Utils/miktex/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb><C:/Utils/miktex/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Utils/miktex/
+fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Utils/miktex/fonts/type1/public/am
+sfonts/cm/cmsy9.pfb><C:/Utils/miktex/fonts/type1/urw/courier/ucrb8a.pfb><C:/Uti
+ls/miktex/fonts/type1/urw/courier/ucrr8a.pfb><C:/Utils/miktex/fonts/type1/urw/c
+ourier/ucrro8a.pfb><C:/Utils/miktex/fonts/type1/urw/times/utmb8a.pfb><C:/Utils/
+miktex/fonts/type1/urw/times/utmr8a.pfb><C:/Utils/miktex/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on document.pdf (15 pages, 535341 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 465 PDF objects out of 1000 (max. 8388607)
+ 180 named destinations out of 1000 (max. 500000)
+ 29 words of extra memory for PDF output out of 10000 (max. 10000000)
 

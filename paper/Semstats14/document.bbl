@@ -1,0 +1,146 @@
+\begin{thebibliography}{10}
+
+\bibitem{EARL}
+S.~Abou-Zahra.
+\newblock {Evaluation and Report Language} {EARL} 1.0 schema.
+\newblock {http://www.w3.org/TR/EARL10-Schema/}, 2011.
+\newblock W3C Working Draft.
+
+\bibitem{Alvarez13}
+J.~M. Alvarez~Rodr\'{i}guez, J.~Clement, J.~E. Labra~Gayo, H.~Farhan, and
+  P.~Ordo\~{n}ez.
+\newblock {\em Cases on Open-Linked Data and Semantic Web Applications},
+  chapter Publishing Statistical Data following the Linked Open Data
+  Principles: The Web Index Project., pages 199--226.
+\newblock IGI Global, 2013.
+\newblock doi:10.4018/978-1-4666-2827-4.ch011.
+
+\bibitem{Boneva2014}
+I.~{Boneva}, J.~E. Labra, S.~{Hym}, E.~G. {Prud'hommeau}, H.~{Solbrig}, and
+  S.~{Staworko}.
+\newblock {Validating RDF with Shape Expressions}.
+\newblock {\em ArXiv e-prints}, Apr. 2014.
+
+\bibitem{Capadisli13}
+S.~Capadisli, S.~Auer, and A.-C. {Ngonga Ngomo}.
+\newblock Linked sdmx data.
+\newblock {\em Semantic Web Journal}, pages 1--8, 2013.
+
+\bibitem{Silva11}
+F.~A. Cifuentes~Silva, C.~Sifaqui, and J.~E. Labra~Gayo.
+\newblock Towards an architecture and adoption process for linked data
+  technologies in open government contexts: a case study for the library of
+  congress of chile.
+\newblock In C.~Ghidini, A.-C.~N. Ngomo, S.~N. Lindstaedt, and T.~Pellegrini,
+  editors, {\em I-SEMANTICS}, ACM International Conference Proceeding Series,
+  pages 79--86. ACM, 2011.
+
+\bibitem{ClarkSirin13}
+K.~Clark and E.~Sirin.
+\newblock On {RDF} validation, stardog {ICV}, and assorted remarks.
+\newblock In {\em RDF Validation Workshop. Practical Assurances for Quality RDF
+  Data}, Cambridge, Ma, Boston, September 2013. W3c,
+  \url{http://www.w3.org/2012/12/rdf-val}.
+
+\bibitem{KarenCoyleTomBaker13}
+K.~Coyle and T.~Baker.
+\newblock Dublin core application profiles. separating validation from
+  semantics.
+\newblock In {\em RDF Validation Workshop. Practical Assurances for Quality RDF
+  Data}, Cambridge, Ma, Boston, September 2013. W3c,
+  \url{http://www.w3.org/2012/12/rdf-val}.
+
+\bibitem{Pubby}
+R.~Cyganiak and C.~Bizer.
+\newblock Pubby: A linked data frontend for sparql endpoints.
+\newblock \url{http://www4.wiwiss.fu-berlin.de/pubby/}.
+
+\bibitem{Cube}
+R.~Cyganiak and D.~Reynolds.
+\newblock The {RDF} {Data} {Cube} {Vocabulary}.
+\newblock {http://www.w3.org/TR/vocab-data-cube/}, 2013.
+\newblock W3c Candidate Recommendation.
+
+\bibitem{SPARQL11}
+S.~Harris and A.~Seaborne.
+\newblock {SPARQL 1.1 Query Language}.
+\newblock {http://www.w3.org/TR/sparql11-query/}, 2013.
+
+\bibitem{hogan10}
+A.~Hogan, A.~Harth, A.~Passant, S.~Decker, and A.~Polleres.
+\newblock Weaving the pedantic web.
+\newblock In {\em Linked Data on the Web Workshop (LDOW2010) at WWW'2010},
+  volume 628, pages 30--34. CEUR Workshop Proceedings, 2010.
+
+\bibitem{kontokostasDatabugger}
+D.~Kontokostas, P.~Westphal, S.~Auer, S.~Hellmann, J.~Lehmann, R.~Cornelissen,
+  and A.~Zaveri.
+\newblock Test-driven evaluation of linked data quality.
+\newblock In {\em Proceedings of the 23rd International Conference on World
+  Wide Web}, WWW '14, pages 747--758, Republic and Canton of Geneva,
+  Switzerland, 2014. International World Wide Web Conferences Steering
+  Committee.
+
+\bibitem{Labra13}
+J.~E. Labra and J.~M. Alvarez~Rodr\'{i}guez.
+\newblock Validating statistical index data represented in {RDF} using {SPARQL}
+  queries.
+\newblock In {\em RDF Validation Workshop. Practical Assurances for Quality RDF
+  Data}, Cambridge, Ma, Boston, September 2013. W3c,
+  \url{http://www.w3.org/2012/12/rdf-val}.
+
+\bibitem{Lange13}
+C.~Lange.
+\newblock Ontologies and languages for representing mathematical knowledge on
+  the semantic web.
+\newblock {\em Semantic Web}, 4(2):119--158, 2013.
+
+\bibitem{Mendes12}
+P.~N. Mendes, H.~M\"{u}hleisen, and C.~Bizer.
+\newblock Sieve: Linked data quality assessment and fusion.
+\newblock In {\em Proceedings of the 2012 Joint EDBT/ICDT Workshops}, EDBT-ICDT
+  '12, pages 116--123, New York, NY, USA, 2012. ACM.
+
+\bibitem{Motik07}
+B.~Motik, I.~Horrocks, and U.~Sattler.
+\newblock {Adding Integrity Constraints to OWL}.
+\newblock In C.~Golbreich, A.~Kalyanpur, and B.~Parsia, editors, {\em OWL:
+  Experiences and Directions 2007 (OWLED 2007)}, Innsbruck, Austria, June 6--7
+  2007.
+
+\bibitem{RDFValidation}
+{RDF Working Group W3c}.
+\newblock W3c validation workshop. practical assurances for quality rdf data,
+  September 2013.
+
+\bibitem{Organization14}
+D.~Reynolds.
+\newblock {The Organization Ontology}.
+\newblock \url{http://www.w3.org/TR/vocab-org/}, 2014.
+
+\bibitem{OSLCResourceShapes}
+A.~G. Ryman, A.~L. Hors, and S.~Speicher.
+\newblock {OSLC} resource shape: A language for defining constraints on linked
+  data.
+\newblock In C.~Bizer, T.~Heath, T.~Berners-Lee, M.~Hausenblas, and S.~Auer,
+  editors, {\em Linked data on the Web}, volume 996 of {\em CEUR Workshop
+  Proceedings}. CEUR-WS.org, 2013.
+
+\bibitem{Tiao10}
+J.~Tao, E.~Sirin, J.~Bao, and D.~L. McGuinness.
+\newblock Integrity constraints in {OWL}.
+\newblock In {\em Proceedings of the 24th AAAI Conference on Artificial
+  Intelligence (AAAI-10)}. AAAI, 2010.
+
+\bibitem{RelaxNG}
+E.~van~der Vlist.
+\newblock {\em Relax NG: A Simpler Schema Language for XML}.
+\newblock O'Reilly, Beijing, 2004.
+
+\bibitem{Wenzel12}
+K.~Wenzel and H.~Reinhardt.
+\newblock Mathematical computations for linked data applications with openmath.
+\newblock In {\em Conferences on Intelligent Computer Mathematics, CICM 2012},
+  2012.
+
+\end{thebibliography}
