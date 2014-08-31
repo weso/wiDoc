@@ -1,0 +1,66 @@
+PREFIX cex: <http://purl.org/weso/ontology/computex#> 
+PREFIX dbpedia: <http://dbpedia.org/resource/> 
+PREFIX dc: <http://purl.org/dc/terms/> 
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX org: <http://www.w3.org/ns/org> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> 
+PREFIX sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> 
+PREFIX sdmxconcept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+PREFIX sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX wf: <http://data.webfoundation.org/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+<Country> { 
+  rdf:type   (wf:Country)
+, rdfs:label xsd:string
+, wf:iso2    xsd:string
+, wf:iso3    xsd:string 
+}
+
+<DataSet> {
+  rdf:type     (qb:DataSet)
+, qb:structure (wf:DSD)
+, dc:publisher @<Organization>
+, rdfs:label   xsd:string?
+, qb:slice     @<Slice>+
+}
+ 
+<Slice> {
+  rdf:type          (qb:Slice)
+, qb:sliceStructure (wf:sliceByYear)
+, qb:observation    @<Observation>+
+, cex:indicator     @<Indicator>
+}
+
+<Observation> {
+  rdf:type      (qb:Observation)
+, cex:value     xsd:float ?
+, dc:issued     xsd:dateTime
+, rdfs:label    xsd:string ?
+, qb:dataSet    @<DataSet>
+, cex:ref-area  @<Country>
+, cex:indicator @<Indicator>
+, cex:ref-year  xsd:gYear
+}
+
+<Indicator> {
+  rdf:type      (wf:PrimaryIndicator wf:SecondaryIndicator)
+, rdfs:label    xsd:string
+, rdfs:comment  xsd:string ?
+, skos:notation xsd:string ?
+}
+
+<Organization> {
+  rdf:type ( org:Organization )
+, rdfs:label xsd:string
+, foaf:homepage IRI
+, org:hasSubOrganization @<Organization>*
+}
+

@@ -1,0 +1,581 @@
+PREFIX cex:<http://purl.org/weso/ontology/computex#>
+PREFIX dbpedia:<http://dbpedia.org/resource/>
+PREFIX dc:<http://purl.org/dc/terms/>
+PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+PREFIX geo:<http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX org:<http://www.w3.org/ns/org>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX qb:<http://purl.org/linked-data/cube#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sdmxAttribute:<http://purl.org/linked-data/sdmx/2009/attribute#>
+PREFIX sdmxCode:<http://purl.org/linked-data/sdmx/2009/code#>
+PREFIX sdmxSubject:<http://purl.org/linked-data/sdmx/2009/subject#>
+PREFIX sdmxconcept:<http://purl.org/linked-data/sdmx/2009/concept#>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+PREFIX time:<http://www.w3.org/2006/time#>
+PREFIX wf:<http://data.webfoundation.org/>
+PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>
+prefix shex: <http://www.w3.org/ns/shex/>
+base <http://example.org/>
+
+CONSTRUCT { 
+ ?Country   shex:hasShape <Country> .
+ ?Indicator shex:hasShape <Indicator> .
+ ?Organization shex:hasShape <Organization> .
+ ?DataSet shex:hasShape <DataSet> .
+ ?Observation shex:hasShape <Observation> .
+} {
+    { SELECT ?Country 
+	   WHERE {
+        ?Country a ?o .
+       } GROUP BY ?Country 
+	     HAVING (COUNT(*)=1)
+	}
+    { SELECT ?Country {
+      ?Country a ?o . 
+	  FILTER ((?o = wf:Country))
+    } GROUP BY ?Country 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country rdfs:label ?o .
+    } GROUP BY ?Country 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country rdfs:label ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?Country 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country wf:iso2 ?o .
+    } GROUP BY ?Country 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country wf:iso2 ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?Country HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country wf:iso3 ?o .
+    } GROUP BY ?Country 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Country {
+      ?Country wf:iso3 ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?Country HAVING (COUNT(*)=1)
+	}
+	
+	
+	# Indicator
+	{ SELECT ?Indicator {
+      ?Indicator a ?o .
+      } 
+	  GROUP BY ?Indicator 
+	  HAVING (COUNT(*)=1)
+	}
+    { SELECT ?Indicator {
+       ?Indicator a ?o . 
+	   FILTER ((?o = wf:PrimaryIndicator || ?o = wf:SecondaryIndicator))
+      } GROUP BY ?Indicator 
+	    HAVING (COUNT(*)=1)
+	}
+    { SELECT ?Indicator {
+        ?Indicator rdfs:label ?o .
+      } GROUP BY ?Indicator 
+	    HAVING (COUNT(*)=1)
+	}
+    { SELECT ?Indicator {
+      ?Indicator rdfs:label ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+      } 
+	  GROUP BY ?Indicator 
+	  HAVING (COUNT(*)=1)
+	}
+    { SELECT ?Indicator (COUNT(*) AS ?Indicator_c0) {
+      ?Indicator rdfs:comment ?o .
+      } 
+	  GROUP BY ?Indicator 
+	  HAVING (COUNT(*)<=1)
+	}
+    { 
+	SELECT ?Indicator (COUNT(*) AS ?Indicator_c1) {
+       ?Indicator rdfs:comment ?o . 
+	   FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+      } 
+	GROUP BY ?Indicator 
+	HAVING (COUNT(*)<=1)
+	}
+    FILTER (?Indicator_c0 = ?Indicator_c1)
+	
+    { SELECT ?Indicator 
+	   (COUNT(*) AS ?Indicator_c2) {
+       ?Indicator skos:notation ?o .
+      } 
+	  GROUP BY ?Indicator 
+	  HAVING (COUNT(*)<=1)
+	}
+    { SELECT ?Indicator (COUNT(*) AS ?Indicator_c3) {
+      ?Indicator skos:notation ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } 
+	GROUP BY ?Indicator 
+	HAVING (COUNT(*)<=1)}
+    FILTER (?Indicator_c2 = ?Indicator_c3)
+
+    # Organization	
+    { SELECT ?Organization {
+      ?Organization a ?o .
+    } GROUP BY ?Organization 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Organization {
+      ?Organization a ?o . 
+	  FILTER ((?o = org:Organization))
+    } GROUP BY ?Organization 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Organization {
+      ?Organization rdfs:label ?o .
+    } GROUP BY ?Organization 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Organization {
+      ?Organization rdfs:label ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?Organization 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Organization {
+      ?Organization foaf:homepage ?o .
+    } GROUP BY ?Organization 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Organization {
+      ?Organization foaf:homepage ?o . 
+	  FILTER (isIRI(?o))
+    } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+    { SELECT ?Organization (COUNT(*) AS ?Organization_c0) {
+      ?Organization org:hasSubOrganization ?o .
+    } GROUP BY ?Organization}
+    { SELECT ?Organization (COUNT(*) AS ?Organization_c1) {
+      ?Organization org:hasSubOrganization ?o .
+    } GROUP BY ?Organization}
+    FILTER (?Organization_c0 = ?Organization_c1)
+
+	# DataSet
+    { SELECT ?DataSet {
+      ?DataSet a ?o .
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet {
+      ?DataSet a ?o . FILTER ((?o = qb:DataSet))
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet {
+      ?DataSet qb:structure ?o .
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet {
+      ?DataSet qb:structure ?o . FILTER ((?o = wf:DSD))
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c0) {
+      ?DataSet dc:publisher ?o .
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet {
+      ?DataSet dc:publisher ?o . FILTER ((isIRI(?o) || isBlank(?o)))
+    } GROUP BY ?DataSet HAVING (COUNT(*)=1)}
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c1) {
+        { SELECT ?DataSet ?Organization {
+          ?DataSet dc:publisher ?Organization . 
+		  FILTER (true && (isIRI(?Organization) || isBlank(?Organization)))
+         } 
+		}
+        { SELECT ?Organization {
+          ?Organization a ?o .
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization {
+          ?Organization a ?o . FILTER ((?o = org:Organization))
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization {
+          ?Organization rdfs:label ?o .
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization {
+          ?Organization rdfs:label ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization {
+          ?Organization foaf:homepage ?o .
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization {
+          ?Organization foaf:homepage ?o . FILTER (isIRI(?o))
+        } GROUP BY ?Organization HAVING (COUNT(*)=1)}
+        { SELECT ?Organization (COUNT(*) AS ?Organization_c0) {
+          ?Organization org:hasSubOrganization ?o .
+        } GROUP BY ?Organization}
+        { SELECT ?Organization (COUNT(*) AS ?Organization_c1) {
+          ?Organization org:hasSubOrganization ?o .
+        } GROUP BY ?Organization}
+        FILTER (?Organization_c0 = ?Organization_c1)
+    } GROUP BY ?DataSet }
+    FILTER (?DataSet_c0 = ?DataSet_c1)
+    OPTIONAL { ?DataSet dc:publisher ?DataSet_Organization_ref0 . 
+	  FILTER (isIRI(?DataSet_Organization_ref0) || 
+	          isBlank(?DataSet_Organization_ref0)
+			  )
+	}
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c2) {
+      ?DataSet rdfs:label ?o .
+    } GROUP BY ?DataSet HAVING (COUNT(*)<=1)}
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c3) {
+      ?DataSet rdfs:label ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?DataSet HAVING (COUNT(*)<=1)}
+    FILTER (?DataSet_c2 = ?DataSet_c3)
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c4) {
+      ?DataSet qb:slice ?o .
+    } GROUP BY ?DataSet 
+	  HAVING (COUNT(*)>=1)}
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c5) {
+      ?DataSet qb:slice ?o . 
+	  FILTER ((isIRI(?o) || isBlank(?o)))
+    } GROUP BY ?DataSet HAVING (COUNT(*)>=1)}
+    FILTER (?DataSet_c4 = ?DataSet_c5)
+    { SELECT ?DataSet (COUNT(*) AS ?DataSet_c6) {
+        { SELECT ?DataSet ?Slice {
+          ?DataSet qb:slice ?Slice . 
+		  FILTER (true && (isIRI(?Slice) || isBlank(?Slice)))
+          } 
+		}
+        { SELECT ?Slice {
+          ?Slice a ?o .
+        } GROUP BY ?Slice HAVING (COUNT(*)=1)}
+        { SELECT ?Slice {
+          ?Slice a ?o . 
+		  FILTER ((?o = qb:Slice))
+        } GROUP BY ?Slice HAVING (COUNT(*)=1)}
+        { SELECT ?Slice {
+          ?Slice qb:sliceStructure ?o .
+        } GROUP BY ?Slice HAVING (COUNT(*)=1)}
+        { SELECT ?Slice {
+          ?Slice qb:sliceStructure ?o . 
+		   FILTER ((?o = wf:sliceByYear))
+        } GROUP BY ?Slice HAVING (COUNT(*)=1)}
+        { SELECT ?Slice (COUNT(*) AS ?Slice_c0) {
+          ?Slice qb:observation ?o .
+        } GROUP BY ?Slice HAVING (COUNT(*)>=1)}
+        { SELECT ?Slice (COUNT(*) AS ?Slice_c1) {
+          ?Slice qb:observation ?o . 
+		   FILTER (isIRI(?o) || isBlank(?o))
+        } GROUP BY ?Slice 
+		  HAVING (COUNT(*)>=1)
+		}
+        FILTER (?Slice_c0 = ?Slice_c1)
+        { SELECT ?Slice (COUNT(*) AS ?Slice_c2) {
+            { SELECT ?Slice ?Observation {
+              ?Slice qb:observation ?Observation . 
+			  FILTER (isIRI(?Observation) || isBlank(?Observation))
+            } }
+            { SELECT ?Observation {
+              ?Observation a ?o .
+            } GROUP BY ?Observation 
+			  HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation a ?o . 
+			  FILTER ((?o = qb:Observation))
+            } GROUP BY ?Observation 
+			  HAVING (COUNT(*)=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c0) {
+              ?Observation cex:value ?o .
+            } GROUP BY ?Observation 
+			  HAVING (COUNT(*)<=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c1) {
+              ?Observation cex:value ?o . 
+			  FILTER ((isLiteral(?o) && datatype(?o) = xsd:float))
+            } GROUP BY ?Observation HAVING (COUNT(*)<=1)}
+            FILTER (?Observation_c0 = ?Observation_c1)
+            { SELECT ?Observation {
+              ?Observation dc:issued ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation dc:issued ?o . 
+			  FILTER ((isLiteral(?o) && datatype(?o) = xsd:dateTime))
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c2) {
+              ?Observation rdfs:label ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)<=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c3) {
+              ?Observation rdfs:label ?o . 
+			  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+            } GROUP BY ?Observation HAVING (COUNT(*)<=1)}
+            FILTER (?Observation_c2 = ?Observation_c3)
+            { SELECT ?Observation {
+              ?Observation qb:dataSet ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation qb:dataSet ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c4) {
+              ?Observation cex:ref-area ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation cex:ref-area ?o . 
+			  FILTER ((isIRI(?o) || isBlank(?o)))
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c5) {
+                { SELECT ?Observation ?Country {
+                  ?Observation cex:ref-area ?Country . 
+				  FILTER (true && (isIRI(?Country) || isBlank(?Country)))
+                } }
+                { SELECT ?Country {
+                  ?Country a ?o .
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country a ?o . FILTER ((?o = wf:Country))
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country rdfs:label ?o .
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country rdfs:label ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country wf:iso2 ?o .
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country wf:iso2 ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country wf:iso3 ?o .
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+                { SELECT ?Country {
+                  ?Country wf:iso3 ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Country HAVING (COUNT(*)=1)}
+            } GROUP BY ?Observation }
+            FILTER (?Observation_c4 = ?Observation_c5)
+            OPTIONAL { ?Observation cex:ref-area ?Observation_Country_ref0 . 
+			  FILTER (true && (isIRI(?Observation_Country_ref0) || isBlank(?Observation_Country_ref0))) }
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c6) {
+              ?Observation cex:indicator ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation cex:indicator ?o . 
+			  FILTER ((isIRI(?o) || isBlank(?o)))
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation (COUNT(*) AS ?Observation_c7) {
+                { SELECT ?Observation ?Indicator {
+                  ?Observation cex:indicator ?Indicator . 
+				  FILTER (true && (isIRI(?Indicator) || isBlank(?Indicator)))
+                } }
+                { SELECT ?Indicator {
+                  ?Indicator a ?o .
+                } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+                { SELECT ?Indicator {
+                  ?Indicator a ?o . 
+				  FILTER ((?o = wf:PrimaryIndicator || ?o = wf:SecondaryIndicator))
+                } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+                { SELECT ?Indicator {
+                  ?Indicator rdfs:label ?o .
+                } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+                { SELECT ?Indicator {
+                  ?Indicator rdfs:label ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+                { SELECT ?Indicator (COUNT(*) AS ?Indicator_c0) {
+                  ?Indicator rdfs:comment ?o .
+                } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+                { SELECT ?Indicator (COUNT(*) AS ?Indicator_c1) {
+                  ?Indicator rdfs:comment ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+                FILTER (?Indicator_c0 = ?Indicator_c1)
+                { SELECT ?Indicator (COUNT(*) AS ?Indicator_c2) {
+                  ?Indicator skos:notation ?o .
+                } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+                { SELECT ?Indicator (COUNT(*) AS ?Indicator_c3) {
+                  ?Indicator skos:notation ?o . 
+				  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+                } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+                FILTER (?Indicator_c2 = ?Indicator_c3)
+            } GROUP BY ?Observation }
+            FILTER (?Observation_c6 = ?Observation_c7)
+            OPTIONAL { ?Observation cex:indicator ?Observation_Indicator_ref0 . 
+			  FILTER (isIRI(?Observation_Indicator_ref0) || isBlank(?Observation_Indicator_ref0)) 
+			 }
+            { SELECT ?Observation {
+              ?Observation cex:ref-year ?o .
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+            { SELECT ?Observation {
+              ?Observation cex:ref-year ?o . 
+			  FILTER ((isLiteral(?o) && datatype(?o) = xsd:gYear))
+            } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+        } GROUP BY ?Slice }
+        FILTER (?Slice_c0 = ?Slice_c2)
+        OPTIONAL { ?Slice qb:observation ?Slice_Observation_ref0 . 
+		   FILTER (isIRI(?Slice_Observation_ref0) || isBlank(?Slice_Observation_ref0)) 
+		}
+        { SELECT ?Slice (COUNT(*) AS ?Slice_c3) {
+          ?Slice cex:indicator ?o .
+        } GROUP BY ?Slice 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Slice {
+          ?Slice cex:indicator ?o . 
+		  FILTER (isIRI(?o) || isBlank(?o))
+        } 
+		GROUP BY ?Slice 
+		HAVING (COUNT(*)=1)}
+    } GROUP BY ?DataSet }
+    FILTER (?DataSet_c4 = ?DataSet_c6)
+    OPTIONAL { ?DataSet qb:slice ?DataSet_Slice_ref0 . 
+	 FILTER (isIRI(?DataSet_Slice_ref0) || isBlank(?DataSet_Slice_ref0))
+	}
+	
+    { SELECT ?Observation {
+      ?Observation a ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation a ?o . 
+	  FILTER ((?o = qb:Observation))
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c0) {
+      ?Observation cex:value ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)<=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c1) {
+      ?Observation cex:value ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:float))
+    } GROUP BY ?Observation HAVING (COUNT(*)<=1)}
+    FILTER (?Observation_c0 = ?Observation_c1)
+    { SELECT ?Observation {
+      ?Observation dc:issued ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation dc:issued ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:dateTime))
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c2) {
+      ?Observation rdfs:label ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)<=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c3) {
+      ?Observation rdfs:label ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)<=1)}
+    FILTER (?Observation_c2 = ?Observation_c3)
+    { SELECT ?Observation {
+      ?Observation qb:dataSet ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation qb:dataSet ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c4) {
+      ?Observation cex:ref-area ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation cex:ref-area ?o . 
+	  FILTER ((isIRI(?o) || isBlank(?o)))
+    } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c5) {
+        { SELECT ?Observation ?Country {
+          ?Observation cex:ref-area ?Country . 
+		  FILTER (true && (isIRI(?Country) || isBlank(?Country)))
+        } }
+        { SELECT ?Country {
+          ?Country a ?o .
+        } GROUP BY ?Country HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country a ?o . 
+		  FILTER ((?o = wf:Country))
+        } GROUP BY ?Country 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country rdfs:label ?o .
+        } GROUP BY ?Country 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country rdfs:label ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Country HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country wf:iso2 ?o .
+        } GROUP BY ?Country HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country wf:iso2 ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Country HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country wf:iso3 ?o .
+        } GROUP BY ?Country 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Country {
+          ?Country wf:iso3 ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Country HAVING (COUNT(*)=1)}
+    } GROUP BY ?Observation }
+    FILTER (?Observation_c4 = ?Observation_c5)
+    OPTIONAL { ?Observation cex:ref-area ?Observation_Country_ref0 . 
+	FILTER (isIRI(?Observation_Country_ref0) || isBlank(?Observation_Country_ref0)) 
+	}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c6) {
+      ?Observation cex:indicator ?o .
+    } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation cex:indicator ?o . 
+	  FILTER ((isIRI(?o) || isBlank(?o)))
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation (COUNT(*) AS ?Observation_c7) {
+        { SELECT ?Observation ?Indicator {
+          ?Observation cex:indicator ?Indicator . 
+		  FILTER (isIRI(?Indicator) || isBlank(?Indicator))
+         } 
+		}
+        { SELECT ?Indicator {
+          ?Indicator a ?o .
+        } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+        { SELECT ?Indicator {
+          ?Indicator a ?o . 
+		  FILTER ((?o = wf:PrimaryIndicator || ?o = wf:SecondaryIndicator))
+        } GROUP BY ?Indicator 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Indicator {
+          ?Indicator rdfs:label ?o .
+        } GROUP BY ?Indicator 
+		  HAVING (COUNT(*)=1)}
+        { SELECT ?Indicator {
+          ?Indicator rdfs:label ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Indicator HAVING (COUNT(*)=1)}
+        { SELECT ?Indicator (COUNT(*) AS ?Indicator_c0) {
+          ?Indicator rdfs:comment ?o .
+        } GROUP BY ?Indicator 
+		  HAVING (COUNT(*)<=1)}
+        { SELECT ?Indicator (COUNT(*) AS ?Indicator_c1) {
+          ?Indicator rdfs:comment ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+        FILTER (?Indicator_c0 = ?Indicator_c1)
+        { SELECT ?Indicator (COUNT(*) AS ?Indicator_c2) {
+          ?Indicator skos:notation ?o .
+        } GROUP BY ?Indicator 
+		  HAVING (COUNT(*)<=1)}
+        { SELECT ?Indicator (COUNT(*) AS ?Indicator_c3) {
+          ?Indicator skos:notation ?o . 
+		  FILTER ((isLiteral(?o) && datatype(?o) = xsd:string))
+        } GROUP BY ?Indicator HAVING (COUNT(*)<=1)}
+        FILTER (?Indicator_c2 = ?Indicator_c3)
+    } GROUP BY ?Observation }
+    FILTER (?Observation_c6 = ?Observation_c7)
+    OPTIONAL { ?Observation cex:indicator ?Observation_Indicator_ref0 . 
+	 FILTER (isIRI(?Observation_Indicator_ref0) || isBlank(?Observation_Indicator_ref0)) 
+	}
+    { SELECT ?Observation {
+      ?Observation cex:ref-year ?o .
+    } GROUP BY ?Observation 
+	  HAVING (COUNT(*)=1)}
+    { SELECT ?Observation {
+      ?Observation cex:ref-year ?o . 
+	  FILTER ((isLiteral(?o) && datatype(?o) = xsd:gYear))
+    } GROUP BY ?Observation HAVING (COUNT(*)=1)}
+}

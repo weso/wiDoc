@@ -1,0 +1,82 @@
+PREFIX cex: <http://purl.org/weso/ontology/computex#> 
+PREFIX dbpedia: <http://dbpedia.org/resource/> 
+PREFIX dc: <http://purl.org/dc/terms/> 
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX org: <http://www.w3.org/ns/org> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX qb: <http://purl.org/linked-data/cube#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX sdmxAttribute: <http://purl.org/linked-data/sdmx/2009/attribute#> 
+PREFIX sdmxCode: <http://purl.org/linked-data/sdmx/2009/code#> 
+PREFIX sdmxconcept: <http://purl.org/linked-data/sdmx/2009/concept#> 
+PREFIX sdmxSubject: <http://purl.org/linked-data/sdmx/2009/subject#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+PREFIX time: <http://www.w3.org/2006/time#> 
+PREFIX wf: <http://data.webfoundation.org/> 
+PREFIX onto: <http://data.webfoundation.org/ontology/> 
+PREFIX wiorg: <http://data.webfoundation.org/organization/> 
+PREFIX people: <http://data.webfoundation.org/people/> 
+PREFIX component: <http://data.webfoundation.org/webindex/v2013/component/> 
+PREFIX country: <http://data.webfoundation.org/webindex/v2013/country/> 
+PREFIX dataset: <http://data.webfoundation.org/webindex/v2013/dataset/> 
+PREFIX indicator: <http://data.webfoundation.org/webindex/v2013/indicator/> 
+PREFIX obs: <http://data.webfoundation.org/webindex/v2013/observation/> 
+PREFIX ranking: <http://data.webfoundation.org/webindex/v2013/ranking/> 
+PREFIX region: <http://data.webfoundation.org/webindex/v2013/region/> 
+PREFIX slice: <http://data.webfoundation.org/webindex/v2013/slice/> 
+PREFIX weightSchema: <http://data.webfoundation.org/webindex/v2013/weightSchema/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix : <http://example.org/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+
+obs:obs8165 
+ a              qb:Observation ;
+ rdfs:label     "ITU B in ESP, 2011" ;
+ cex:indicator  indicator:ITU_B ;
+ qb:dataSet     dataset:DITU ;
+ cex:value      "23.78"^^xsd:float ;
+ cex:ref-year   "2011"^^xsd:gYear ;
+ dc:issued      "2013-05-30T09:15:00"^^xsd:dateTime ;
+ cex:ref-area   country:Spain ;
+.
+
+country:Spain a wf:Country ;
+       wf:iso2 "ES" ;
+	   wf:iso3 "ESP" ;
+	   rdfs:label "Spain" .
+	   
+country:France a wf:Country ;
+       wf:iso2 "FR" ;
+	   wf:iso3 "FRA" ;
+	   rdfs:label "France" .
+
+indicator:ITU_B a wf:SecondaryIndicator ;
+ rdfs:label "Broadband subscribers %"
+ .
+ 
+dataset:DITU a qb:DataSet ;
+ rdfs:label "ITU Dataset" ;
+ dc:publisher wiorg:ITU ;
+ qb:structure wf:DSD ;
+ qb:slice slice:ITU11B .
+ 
+slice:ITU11B a qb:Slice ;
+ qb:sliceStructure wf:sliceByYear ;
+ qb:observation obs:obs8165;
+ cex:indicator indicator:ITU_B .
+ 
+wiorg:ITU a org:Organization ;
+ rdfs:label "ITU" ; 
+ foaf:homepage <http://www.itu.int/>
+ .
+ 
+
+
+
+	   
+	   
+
+	   
+	   
