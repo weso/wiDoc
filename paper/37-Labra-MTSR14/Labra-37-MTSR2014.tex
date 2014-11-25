@@ -24,6 +24,8 @@
 %\usepackage[hmargin=1.3in]{geometry}
 % \setlength{\droptitle}{-5em}   % This is your set screw
 
+\usepackage{footnote}
+
 
 \definecolor{Brown}{cmyk}{0,0.81,1,0.60}
 \definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
@@ -281,7 +283,7 @@ A dataset contains a number of slices, each of which also contains a number of o
 Indicators are provided by an organization of type \lstinline|org:Organization| from the Organization ontology\cite{Organization14}. Datasets are also published by organizations. 
 
 As a sample of some data, 
-an observation can be that Italy has the normalized value using Z-Scores of $-0.80$ in 2007 for the indicator WEF\_L (\emph{Impact of ICT on organizational models}) provided by the World Economic Forum. 
+an observation can be that Italy has $-0.80$ as the normalized value using Z-Scores in 2007 for the indicator WEF\_L (\emph{Impact of ICT on organizational models}) provided by the World Economic Forum. 
 This information can be represented in RDF using Turtle syntax as\footnote{The real observation is \url{http://data.webfoundation.org/webindex/v2013/observation/computed_2007_1386752461095_26549}. The real URIs also include an internal long number used to uniquely identify each entity}:
 
 \begin{lstlisting}[style=SPARQL]
@@ -340,9 +342,9 @@ Including these declarations, an external agent can verify if the value of the o
 
 \section{Computex vocabulary}
 
-The \emph{Computex}\footnote{\url{http://purl.org/weso/ontology/computex}} defines terms related to the
-computation of statistical index data and is compatible with RDF Data Cube
-vocabulary. Some terms defined in the vocabulary are:
+The \emph{Computex}\footnote{\url{http://purl.org/weso/ontology/computex}} vocabulary defines terms related to the
+computation of statistical index data and can be seen as a specialization of the RDF Data Cube
+vocabulary for this kind of statistical computations. Some terms defined in the vocabulary are:
 
 \begin{itemize}
 \item\textbf{\lstinline|cex:Concept|} represents the entities that we are
@@ -366,8 +368,8 @@ used to compute an aggregated observation.
 
 \end{itemize}
 
+\begin{savenotes}
 \begin{table*}[t]
-\label{table:computations}
 \begin{center}
 \begin{tabular}{ p{0.2\textwidth} p{0.5\textwidth} p{0.3\textwidth}}
 \toprule
@@ -397,10 +399,10 @@ WeightedMean & Weighted mean of an observation
 			  \lstinline|cex:weightSchema| \\
 \bottomrule\\
 \end{tabular}
-\caption{Some types of statistical computations}
 \end{center}
+\caption{Some types of statistical computations}\label{table:computations}
 \end{table*}
-
+ \end{savenotes}
 \section{Development and Validation approach}
 
 The validation approach employed in the 2012 WebIndex project was based on ad-hoc resource templates and a MD5 checksum field. 
